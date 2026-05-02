@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Intelligence Plan — Data & AI Strategy 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #08090a;
+  --surface: #0f1012;
+  --surface2: #161719;
+  --border: #222428;
+  --border2: #2e3035;
+  --text: #e8e6e0;
+  --muted: #6b6d74;
+  --muted2: #9b9da4;
+  --accent: #e8834a;
+  --accent2: #f0a87a;
+  --green: #4caf82;
+  --blue: #5b9cf0;
+  --gold: #c8a84b;
+  --graph: #7c6cf0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 5vw;
+  background: rgba(8,9,10,0.88);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Instrument Serif', serif;
+  font-size: 17px;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+@media (max-width: 640px) { .nav-links { display: none; } }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 8vw 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(232,131,74,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(124,108,240,0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 28px;
+  animation: fadeUp 0.7s ease both;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--accent);
+}
+
+/* Project name headline */
+.hero-project-name {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(52px, 8vw, 110px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+  animation: fadeUp 0.7s 0.08s ease both;
+  opacity: 0;
+  color: var(--text);
+}
+
+.hero-project-name .word-ri { color: var(--accent); font-style: italic; }
+
+.hero-project-tagline {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(16px, 2vw, 24px);
+  color: var(--muted2);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  margin-bottom: 36px;
+  animation: fadeUp 0.7s 0.15s ease both;
+  opacity: 0;
+  font-style: italic;
+}
+
+.hero-desc {
+  font-size: 16px;
+  color: var(--muted2);
+  max-width: 580px;
+  line-height: 1.75;
+  font-weight: 300;
+  margin-bottom: 28px;
+  animation: fadeUp 0.7s 0.2s ease both;
+  opacity: 0;
+}
+
+/* Scope badge */
+.scope-badge {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 18px;
+  background: rgba(232,131,74,0.07);
+  border: 1px solid rgba(232,131,74,0.28);
+  border-radius: 10px;
+  font-size: 13px;
+  color: var(--accent2);
+  margin-bottom: 40px;
+  animation: fadeUp 0.7s 0.25s ease both;
+  opacity: 0;
+  max-width: 620px;
+  line-height: 1.65;
+}
+
+.scope-badge .scope-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.scope-badge strong { color: var(--accent); }
+
+.hero-stats {
+  display: flex;
+  gap: 0;
+  animation: fadeUp 0.7s 0.3s ease both;
+  opacity: 0;
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 640px;
+  background: var(--surface);
+}
+
+.stat {
+  flex: 1;
+  padding: 22px 24px;
+  border-right: 1px solid var(--border2);
+}
+
+.stat:last-child { border-right: none; }
+
+.stat-val {
+  font-family: 'Instrument Serif', serif;
+  font-size: 26px;
+  color: var(--text);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ─── SECTION BASE ─── */
+section {
+  padding: 100px 8vw;
+  border-top: 1px solid var(--border);
+}
+
+.section-label {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.section-label::before {
+  content: '';
+  width: 20px; height: 1px;
+  background: var(--accent);
+}
+
+h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(30px, 4vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 56px;
+}
+
+h2 em { font-style: italic; color: var(--muted2); }
+
+/* ─── PROBLEM GRID ─── */
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.problem-card {
+  background: var(--surface);
+  padding: 32px 28px;
+  transition: background 0.2s;
+}
+
+.problem-card:hover { background: var(--surface2); }
+
+.p-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  margin-bottom: 18px;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+}
+
+.problem-card h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.problem-card p {
+  font-size: 13.5px;
+  color: var(--muted2);
+  line-height: 1.7;
+}
+
+/* ─── DATA FLOW DIAGRAM ─── */
+.flow-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 48px 0 64px;
+}
+
+@media (max-width: 700px) { .flow-compare { grid-template-columns: 1fr; } }
+
+.flow-box {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border2);
+}
+
+.flow-box.old { border-color: rgba(107,109,116,0.3); }
+.flow-box.new { border-color: rgba(76,175,130,0.3); }
+
+.flow-header {
+  padding: 14px 20px;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flow-box.old .flow-header { background: rgba(107,109,116,0.1); color: var(--muted2); border-bottom: 1px solid rgba(107,109,116,0.2); }
+.flow-box.new .flow-header { background: rgba(76,175,130,0.08); color: var(--green); border-bottom: 1px solid rgba(76,175,130,0.2); }
+
+.flow-body { padding: 20px; background: var(--surface); }
+
+.flow-nodes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.flow-sources {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.fn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.fn.source { background: var(--surface2); border: 1px solid var(--border2); color: var(--muted2); }
+.fn.powerbi { background: rgba(232,131,74,0.12); border: 1px solid rgba(232,131,74,0.3); color: var(--accent2); }
+.fn.db { background: rgba(76,175,130,0.1); border: 1px solid rgba(76,175,130,0.3); color: var(--green); }
+.fn.tool { background: rgba(91,156,240,0.1); border: 1px solid rgba(91,156,240,0.25); color: var(--blue); }
+.fn.ai { background: rgba(124,108,240,0.1); border: 1px solid rgba(124,108,240,0.25); color: var(--graph); }
+
+.fn-arrow {
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1;
+}
+
+.fn-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+  margin: 2px 0;
+}
+
+.flow-problem {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  font-size: 12.5px;
+  color: var(--muted2);
+  line-height: 1.6;
+}
+
+.flow-problem span { color: #e05c5c; }
+.flow-problem.good span { color: var(--green); }
+
+.flow-tools-row {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─── PHASE DIVIDER ─── */
+.phase-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 48px 0 24px;
+}
+
+.phase-divider-line { flex: 1; height: 1px; background: var(--border2); }
+
+.phase-divider-label {
+  padding: 6px 20px;
+  border-radius: 99px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.phase-divider-label.fundamental {
+  color: var(--accent);
+  border-color: rgba(232,131,74,0.4);
+  background: rgba(232,131,74,0.07);
+}
+
+.phase-divider-label.ai-layer {
+  color: var(--graph);
+  border-color: rgba(124,108,240,0.4);
+  background: rgba(124,108,240,0.07);
+}
+
+/* Why AI needs Foundation box */
+.why-ai-box {
+  background: rgba(124,108,240,0.05);
+  border: 1px solid rgba(124,108,240,0.25);
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.why-ai-box .icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+
+.why-ai-box-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--graph);
+  margin-bottom: 6px;
+}
+
+.why-ai-box p {
+  font-size: 13.5px;
+  color: var(--muted2);
+  line-height: 1.7;
+}
+
+.why-ai-box strong { color: var(--accent2); }
+
+/* ─── PHASES ─── */
+.logic-banner {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 14px;
+  padding: 28px 32px;
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logic-banner .icon { font-size: 26px; flex-shrink: 0; }
+
+.logic-banner p {
+  font-size: 14.5px;
+  color: var(--muted2);
+  line-height: 1.7;
+}
+
+.logic-banner strong { color: var(--accent); font-weight: 600; }
+
+/* Scope focus banner */
+.focus-banner {
+  background: rgba(232,131,74,0.04);
+  border: 1px solid rgba(232,131,74,0.22);
+  border-radius: 14px;
+  padding: 24px 32px;
+  margin-bottom: 48px;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.focus-banner .icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+
+.focus-banner-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.focus-banner p {
+  font-size: 13.5px;
+  color: var(--muted2);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.focus-banner strong { color: var(--accent2); }
+
+.focus-domains {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.focus-domain {
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 12px;
+  border: 1px solid rgba(232,131,74,0.28);
+  color: var(--accent2);
+  background: rgba(232,131,74,0.06);
+}
+
+.focus-domain.future {
+  border-color: rgba(107,109,116,0.3);
+  color: var(--muted);
+  background: transparent;
+}
+
+.phase-list { display: flex; flex-direction: column; gap: 0; }
+
+.phase-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  margin-bottom: -1px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.phase-item:first-child { border-radius: 16px 16px 0 0; }
+.phase-item:last-child { border-radius: 0 0 16px 16px; margin-bottom: 0; }
+
+.phase-item:hover { border-color: var(--border2); z-index: 1; position: relative; }
+
+.phase-left {
+  background: var(--surface);
+  padding: 32px 24px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.phase-num {
+  font-family: 'Instrument Serif', serif;
+  font-size: 48px;
+  line-height: 1;
+  color: var(--border2);
+  margin-bottom: 20px;
+}
+
+.phase-tag {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.phase-right {
+  background: var(--bg);
+  padding: 32px 36px;
+}
+
+.phase-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.phase-desc {
+  font-size: 14px;
+  color: var(--muted2);
+  line-height: 1.75;
+  margin-bottom: 20px;
+  max-width: 680px;
+}
+
+.phase-why {
+  background: var(--surface);
+  border-left: 2px solid var(--accent);
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--muted2);
+  line-height: 1.65;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 20px;
+  max-width: 660px;
+}
+
+.phase-why strong { color: var(--accent); }
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 12px;
+  border: 1px solid var(--border2);
+  color: var(--muted2);
+  background: var(--surface);
+}
+
+.tag.accent { border-color: var(--accent); color: var(--accent); background: rgba(232,131,74,0.06); }
+.tag.graph { border-color: var(--graph); color: var(--graph); background: rgba(124,108,240,0.07); }
+.tag.green { border-color: var(--green); color: var(--green); background: rgba(76,175,130,0.07); }
+.tag.blue { border-color: var(--blue); color: var(--blue); background: rgba(91,156,240,0.07); }
+
+/* ─── COMPARE BLOCK ─── */
+.compare-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0;
+  max-width: 680px;
+}
+
+@media (max-width: 600px) { .compare-block { grid-template-columns: 1fr; } }
+
+.compare-col { border-radius: 10px; overflow: hidden; }
+
+.compare-header {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 10px 14px;
+}
+
+.compare-header.old { background: rgba(107,109,116,0.15); color: var(--muted2); }
+.compare-header.new { background: rgba(76,175,130,0.12); color: var(--green); }
+
+.compare-body { border: 1px solid var(--border2); border-top: none; border-radius: 0 0 10px 10px; }
+
+.compare-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 9px 14px;
+  font-size: 13px;
+  color: var(--muted2);
+  line-height: 1.5;
+  border-bottom: 1px solid var(--border);
+}
+
+.compare-row:last-child { border-bottom: none; }
+.compare-row .ci { flex-shrink: 0; font-size: 12px; margin-top: 1px; }
+.compare-col.old .ci { color: var(--muted); }
+.compare-col.new .ci { color: var(--green); }
+
+/* ─── AI TECH STACK (lightweight) ─── */
+.ai-stack {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 16px 0;
+  max-width: 660px;
+}
+
+.ai-stack-title {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.ai-stack-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ast-node {
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--border2);
+  background: var(--surface2);
+  color: var(--muted2);
+}
+
+.ast-node.hi {
+  border-color: rgba(124,108,240,0.4);
+  background: rgba(124,108,240,0.08);
+  color: var(--graph);
+}
+
+.ast-arrow { color: var(--muted); font-size: 12px; }
+
+.ast-benefit {
+  font-size: 12.5px;
+  color: var(--muted2);
+  margin-top: 10px;
+  line-height: 1.6;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.ast-benefit strong { color: var(--accent2); }
+
+/* ─── IMPACT ─── */
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 40px;
+}
+
+.impact-card {
+  background: var(--surface);
+  padding: 32px 24px;
+  position: relative;
+}
+
+.impact-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+
+.impact-card.critical::before { background: var(--accent); }
+.impact-card.high::before { background: var(--green); }
+.impact-card.medium::before { background: var(--gold); }
+.impact-card.transform::before { background: var(--graph); }
+.impact-card.blue-t::before { background: var(--blue); }
+.impact-card.custom::before { background: var(--blue); }
+
+.impact-phase {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.impact-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 18px;
+  color: var(--text);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.impact-desc {
+  font-size: 13px;
+  color: var(--muted2);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.impact-level {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot { width: 6px; height: 6px; border-radius: 50%; }
+.impact-card.critical .impact-level { color: var(--accent); }
+.impact-card.critical .dot { background: var(--accent); }
+.impact-card.high .impact-level { color: var(--green); }
+.impact-card.high .dot { background: var(--green); }
+.impact-card.medium .impact-level { color: var(--gold); }
+.impact-card.medium .dot { background: var(--gold); }
+.impact-card.transform .impact-level { color: var(--graph); }
+.impact-card.transform .dot { background: var(--graph); }
+.impact-card.blue-t .impact-level { color: var(--blue); }
+.impact-card.blue-t .dot { background: var(--blue); }
+.impact-card.custom .impact-level { color: var(--blue); }
+.impact-card.custom .dot { background: var(--blue); }
+
+/* ─── VALUE CARDS ─── */
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 48px;
+}
+
+.value-card {
+  background: var(--surface);
+  padding: 32px 28px;
+  transition: background 0.2s;
+}
+
+.value-card:hover { background: var(--surface2); }
+
+.value-icon { font-size: 24px; margin-bottom: 16px; }
+
+.value-card h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 19px;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.value-card p {
+  font-size: 13.5px;
+  color: var(--muted2);
+  line-height: 1.7;
+}
+
+/* ─── QUOTE BREAK ─── */
+.quote-break {
+  padding: 80px 8vw;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.quote-break::before {
+  content: '"';
+  position: absolute;
+  top: -20px;
+  left: 6vw;
+  font-family: 'Instrument Serif', serif;
+  font-size: 200px;
+  color: var(--border);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.quote-break blockquote {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(20px, 3vw, 36px);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  max-width: 820px;
+  position: relative;
+  z-index: 1;
+}
+
+.quote-break blockquote em { color: var(--accent); font-style: italic; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 760px) {
+  .phase-item { grid-template-columns: 1fr; }
+  .phase-left { border-right: none; border-bottom: 1px solid var(--border); padding: 20px 24px; flex-direction: row; align-items: center; gap: 16px; }
+  .phase-num { font-size: 32px; margin-bottom: 0; }
+}
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 40px 8vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  border-top: 1px solid var(--border);
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── PHASE LINK BUTTONS ─── */
+.phase-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid rgba(76,175,130,0.4);
+  color: var(--green);
+  background: rgba(76,175,130,0.07);
+  transition: background 0.2s, border-color 0.2s;
+  letter-spacing: 0.01em;
+}
+
+.phase-link-btn:hover {
+  background: rgba(76,175,130,0.14);
+  border-color: rgba(76,175,130,0.6);
+}
+
+.phase-link-btn-video {
+  border-color: rgba(91,156,240,0.4);
+  color: var(--blue);
+  background: rgba(91,156,240,0.07);
+}
+
+.phase-link-btn-video:hover {
+  background: rgba(91,156,240,0.14);
+  border-color: rgba(91,156,240,0.6);
+}
+
+/* ─── NAV TOC ─── */
+.nav-toc-wrap {
+  position: relative;
+}
+
+.nav-toc-btn {
+  padding: 8px 16px;
+  border-radius: 7px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  border: 1px solid var(--border2);
+  color: var(--muted2);
+  background: var(--surface);
+  transition: all 0.18s;
+}
+
+.nav-toc-btn:hover, .nav-toc-btn.open {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(232,131,74,0.07);
+}
+
+.nav-toc-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 260px;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+  z-index: 200;
+}
+
+.nav-toc-dropdown.open { display: block; animation: fadeUp 0.18s ease both; }
+
+.toc-group-label {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  padding: 12px 16px 6px;
+}
+
+.toc-group-label.toc-ai { color: var(--graph); }
+
+.toc-item {
+  display: block;
+  padding: 8px 16px;
+  font-size: 13px;
+  color: var(--muted2);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  border-left: 2px solid transparent;
+}
+
+.toc-item:hover {
+  background: var(--surface2);
+  color: var(--accent);
+  border-left-color: var(--accent);
+}
+
+.toc-ai-item:hover {
+  color: var(--graph);
+  border-left-color: var(--graph);
+}
+
+.toc-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 6px 0;
+}
+
+/* ─── VISION DIAGRAM ─── */
+.vision-section {
+  padding: 80px 8vw;
+  border-top: 1px solid var(--border);
+}
+
+.vision-label {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.vision-label::before {
+  content: '';
+  width: 20px; height: 1px;
+  background: var(--accent);
+}
+
+.vision-h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(28px, 3.5vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 48px;
+}
+
+.vision-h2 em { font-style: italic; color: var(--muted2); }
+
+.vision-diagram {
+  width: 100%;
+  max-width: 960px;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Data Intelligence Plan · 2026</div>
+  <ul class="nav-links">
+    <li><a href="#problems">ปัญหา</a></li>
+    <li><a href="#vision">ภาพรวม</a></li>
+    <li><a href="#roadmap">แผนงาน</a></li>
+    <li><a href="#phase1">Phase 1–3</a></li>
+    <li><a href="#phase4">Phase 4–6</a></li>
+    <li><a href="#impact">Business Value</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─── -->
+<div class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+
+  <p class="hero-eyebrow">Executive Strategy Brief · 2026</p>
+
+  <div class="hero-project-name"><span class="word-ri">Data</span><br>Intelligence<br>Plan</div>
+  <div class="hero-project-tagline">แผนงานที่เปลี่ยนข้อมูลให้เป็นเครื่องตัดสินใจของทั้งองค์กร</div>
+
+  <p class="hero-desc">แผนงาน 6 ระยะ สร้าง Data Foundation ที่แข็งแกร่ง และ AI Agent ที่ทำงานแทนคนได้จริง — เพื่อเปลี่ยนให้ทุก Decision ขับเคลื่อนด้วยข้อมูล ไม่ใช่ความรู้สึก เริ่มต้นจาก Sales & Revenue Model เป็น Phase แรก</p>
+
+  <div class="scope-badge">
+    <span class="scope-icon">🎯</span>
+    <span>
+      <strong>Phase แรก: Sales & Revenue Model</strong> — ครอบคลุมทุกมิติที่เกี่ยวกับรายได้และการเติบโต ตั้งแต่ <strong>ยอดขาย · การตลาด · Leads</strong> ไปจนถึง <strong>P&amp;L · Margin · Profit</strong> — ก่อนขยายไปยัง Customer, CRM, Retention และ Churn ในระยะถัดไป
+    </span>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-val">6</span>
+      <span class="stat-label">Phases</span>
+    </div>
+    <div class="stat">
+      <span class="stat-val">3</span>
+      <span class="stat-label">AI Agents</span>
+    </div>
+    <div class="stat">
+      <span class="stat-val">1</span>
+      <span class="stat-label">Source of Truth</span>
+    </div>
+    <div class="stat">
+      <span class="stat-val">∞</span>
+      <span class="stat-label">Scalable</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── PROBLEMS ─── -->
+<section id="problems">
+  <p class="section-label reveal">01 — ทำไมต้องทำตอนนี้</p>
+  <h2 class="reveal">ปัญหาที่เราแบก<em>อยู่ทุกวัน</em></h2>
+
+  <div class="problem-grid reveal">
+    <div class="problem-card">
+      <div class="p-icon">🐢</div>
+      <h3>Report โหลดช้า</h3>
+      <p>ข้อมูล raw ถูกยัดตรงเข้า Power BI แล้ว transform Business Logic ทุกครั้งที่โหลด — ยิ่งข้อมูลมาก ยิ่งช้า และยิ่งเสี่ยงผิดพลาด</p>
+    </div>
+    <div class="problem-card">
+      <div class="p-icon">🗂️</div>
+      <h3>ข้อมูลกระจาย หลายแหล่ง</h3>
+      <p>Google Sheet, Zoho, และ Web App อยู่คนละที่ ไม่มีแหล่งความจริงเดียว ทำให้ตัวเลขขัดแย้งกันระหว่าง department</p>
+    </div>
+    <div class="problem-card">
+      <div class="p-icon">🚦</div>
+      <h3>ทุกคำถามต้องรอทีม Data</h3>
+      <p>User ถามอะไรใหม่ ต้องรอ query ต้องรอเพิ่ม dashboard ทำให้การตัดสินใจช้าและสิ้นเปลืองทรัพยากร</p>
+    </div>
+    <div class="problem-card">
+      <div class="p-icon">👥</div>
+      <h3>หาคนยาก — คนอยู่ไม่นาน</h3>
+      <p>Analyst ที่เก่งหายาก และเมื่อลาออกก็พาความรู้ไปด้วย — ทีมจมกับงาน Routine โดยไม่มีเวลาหา Insight ใหม่จริงๆ</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── VISION DIAGRAM ─── -->
+<section class="vision-section" id="vision">
+  <p class="vision-label reveal">02 — ภาพรวม Project</p>
+  <h2 class="vision-h2 reveal">จากข้อมูลกระจัดกระจาย<br><em>สู่ AI ที่สร้าง Insight ให้เลยโดยอัตโนมัติ</em></h2>
+
+  <svg class="vision-diagram reveal" viewBox="0 0 960 860" xmlns="http://www.w3.org/2000/svg" font-family="Outfit, sans-serif">
+    <defs>
+      <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#6b6d74"/></marker>
+      <marker id="arr-grn" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4caf82"/></marker>
+      <marker id="arr-graph" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L0,7 L9,3.5 z" fill="#7c6cf0"/></marker>
+      <marker id="arr-blue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#5b9cf0"/></marker>
+      <marker id="arr-acc" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#e8834a"/></marker>
+      <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <filter id="glow-sm"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+
+    <!-- ════════════════════════════════════════════
+         ROW 1 — BEFORE (old approach)
+    ════════════════════════════════════════════ -->
+
+    <!-- BEFORE header band -->
+    <rect x="10" y="8" width="460" height="26" rx="6" fill="rgba(107,109,116,0.12)" stroke="rgba(107,109,116,0.22)" stroke-width="1"/>
+    <text x="240" y="26" text-anchor="middle" fill="#6b6d74" font-size="10" letter-spacing="2.5" font-weight="600">BEFORE — แบบเดิม</text>
+
+    <!-- Sources row -->
+    <rect x="20" y="46" width="100" height="32" rx="7" fill="#161719" stroke="#2e3035" stroke-width="1"/>
+    <text x="70" y="67" text-anchor="middle" fill="#9b9da4" font-size="11.5">Google Sheet</text>
+
+    <rect x="135" y="46" width="80" height="32" rx="7" fill="#161719" stroke="#2e3035" stroke-width="1"/>
+    <text x="175" y="67" text-anchor="middle" fill="#9b9da4" font-size="11.5">Zoho CRM</text>
+
+    <rect x="230" y="46" width="80" height="32" rx="7" fill="#161719" stroke="#2e3035" stroke-width="1"/>
+    <text x="270" y="67" text-anchor="middle" fill="#9b9da4" font-size="11.5">Web App</text>
+
+    <!-- merge lines to PBI -->
+    <line x1="70"  y1="78" x2="70"  y2="100" stroke="#3a3c42" stroke-width="1.5" marker-end="url(#arr)"/>
+    <line x1="175" y1="78" x2="175" y2="100" stroke="#3a3c42" stroke-width="1.5" marker-end="url(#arr)"/>
+    <line x1="270" y1="78" x2="270" y2="100" stroke="#3a3c42" stroke-width="1.5" marker-end="url(#arr)"/>
+    <line x1="70"  y1="100" x2="200" y2="108" stroke="#3a3c42" stroke-width="1" stroke-dasharray="3,2"/>
+    <line x1="270" y1="100" x2="200" y2="108" stroke="#3a3c42" stroke-width="1" stroke-dasharray="3,2"/>
+
+    <!-- Power BI (ETL+Transform+Viz) -->
+    <rect x="90" y="108" width="220" height="54" rx="9" fill="rgba(232,131,74,0.07)" stroke="rgba(232,131,74,0.28)" stroke-width="1.5"/>
+    <text x="200" y="130" text-anchor="middle" fill="#e8834a" font-size="12.5" font-weight="600">Power BI</text>
+    <text x="200" y="148" text-anchor="middle" fill="#9b9da4" font-size="10.5">ETL + Transform + Visualize ทั้งหมด</text>
+
+    <line x1="200" y1="162" x2="200" y2="184" stroke="#6b6d74" stroke-width="1.5" marker-end="url(#arr)"/>
+
+    <!-- Dashboard -->
+    <rect x="110" y="184" width="180" height="36" rx="8" fill="#161719" stroke="#2e3035" stroke-width="1"/>
+    <text x="200" y="207" text-anchor="middle" fill="#9b9da4" font-size="12">📊 Dashboard Report</text>
+
+    <line x1="200" y1="220" x2="200" y2="242" stroke="#6b6d74" stroke-width="1.5" marker-end="url(#arr)"/>
+
+    <!-- User reads report -->
+    <rect x="100" y="242" width="200" height="42" rx="8" fill="#161719" stroke="#2e3035" stroke-width="1"/>
+    <text x="200" y="263" text-anchor="middle" fill="#9b9da4" font-size="12">👤 User อ่าน Report</text>
+    <text x="200" y="278" text-anchor="middle" fill="#6b6d74" font-size="10.5">แล้วสรุป Insight เอง</text>
+
+    <!-- Pain labels -->
+    <text x="20" y="310" fill="#6b3a3a" font-size="10.5">⚠ โหลดช้า — transform ทุกครั้งที่โหลด</text>
+    <text x="20" y="326" fill="#6b3a3a" font-size="10.5">⚠ ข้อมูลซ้ำซ้อน ไม่มี Single Source of Truth</text>
+    <text x="20" y="342" fill="#6b3a3a" font-size="10.5">⚠ User ต้องดู Report ก่อนถึงจะได้ Insight</text>
+
+    <!-- ════════════════════════════════════════════
+         VERTICAL DIVIDER
+    ════════════════════════════════════════════ -->
+    <line x1="490" y1="8" x2="490" y2="550" stroke="#2e3035" stroke-width="1" stroke-dasharray="5,4"/>
+    <text x="490" y="400" text-anchor="middle" fill="#2e3035" font-size="40" font-weight="700" transform="rotate(-90,490,400)">→</text>
+
+    <!-- ════════════════════════════════════════════
+         ROW 1 — AFTER (new: Foundation phases)
+    ════════════════════════════════════════════ -->
+
+    <!-- AFTER header band -->
+    <rect x="500" y="8" width="450" height="26" rx="6" fill="rgba(76,175,130,0.08)" stroke="rgba(76,175,130,0.22)" stroke-width="1"/>
+    <text x="725" y="26" text-anchor="middle" fill="#4caf82" font-size="10" letter-spacing="2.5" font-weight="600">AFTER — Data Intelligence Plan</text>
+
+    <!-- Sources -->
+    <rect x="508" y="46" width="94" height="32" rx="7" fill="#161719" stroke="#2e3035" stroke-width="1"/>
+    <text x="555" y="67" text-anchor="middle" fill="#9b9da4" font-size="11">Google Sheet</text>
+    <rect x="618" y="46" width="74" height="32" rx="7" fill="#161719" stroke="#2e3035" stroke-width="1"/>
+    <text x="655" y="67" text-anchor="middle" fill="#9b9da4" font-size="11">Zoho CRM</text>
+    <rect x="708" y="46" width="74" height="32" rx="7" fill="#161719" stroke="#2e3035" stroke-width="1"/>
+    <text x="745" y="67" text-anchor="middle" fill="#9b9da4" font-size="11">Web App</text>
+
+    <!-- arrows to DB -->
+    <line x1="555" y1="78" x2="555" y2="98" stroke="#4caf82" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arr-grn)"/>
+    <line x1="655" y1="78" x2="655" y2="98" stroke="#4caf82" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arr-grn)"/>
+    <line x1="745" y1="78" x2="745" y2="98" stroke="#4caf82" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arr-grn)"/>
+    <line x1="555" y1="98" x2="650" y2="106" stroke="#4caf82" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="3,2"/>
+    <line x1="745" y1="98" x2="650" y2="106" stroke="#4caf82" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="3,2"/>
+
+    <!-- Supabase DB box -->
+    <rect x="548" y="106" width="204" height="56" rx="9" fill="rgba(76,175,130,0.07)" stroke="rgba(76,175,130,0.38)" stroke-width="1.5"/>
+    <text x="650" y="129" text-anchor="middle" fill="#4caf82" font-size="12.5" font-weight="600">Supabase Database</text>
+    <text x="650" y="147" text-anchor="middle" fill="#9b9da4" font-size="10.5">Data Model + Business Logic</text>
+
+    <!-- Fan-out arrow -->
+    <line x1="650" y1="162" x2="650" y2="180" stroke="#4caf82" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arr-grn)"/>
+    <!-- horizontal bar -->
+    <line x1="542" y1="188" x2="898" y2="188" stroke="#2e3035" stroke-width="1"/>
+    <!-- verticals down from bar -->
+    <line x1="570" y1="188" x2="570" y2="204" stroke="#4caf82" stroke-width="1" stroke-opacity="0.4" marker-end="url(#arr-grn)"/>
+    <line x1="650" y1="188" x2="650" y2="204" stroke="#4caf82" stroke-width="1" stroke-opacity="0.4" marker-end="url(#arr-grn)"/>
+    <line x1="790" y1="188" x2="790" y2="204" stroke="#7c6cf0" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arr-graph)"/>
+
+    <!-- Power BI tool -->
+    <rect x="510" y="204" width="120" height="36" rx="7" fill="rgba(232,131,74,0.07)" stroke="rgba(232,131,74,0.28)" stroke-width="1"/>
+    <text x="570" y="222" text-anchor="middle" fill="#e8834a" font-size="12" font-weight="500">Power BI</text>
+    <text x="570" y="235" text-anchor="middle" fill="#9b9da4" font-size="10">Visualization only</text>
+
+    <!-- Data Hub -->
+    <rect x="590" y="204" width="120" height="36" rx="7" fill="rgba(91,156,240,0.07)" stroke="rgba(91,156,240,0.28)" stroke-width="1"/>
+    <text x="650" y="222" text-anchor="middle" fill="#5b9cf0" font-size="12" font-weight="500">Data Hub</text>
+    <text x="650" y="235" text-anchor="middle" fill="#9b9da4" font-size="10">Self-Service</text>
+
+    <!-- AI Agents box (right side, AI layer) -->
+    <rect x="718" y="196" width="158" height="50" rx="8" fill="rgba(124,108,240,0.1)" stroke="rgba(124,108,240,0.38)" stroke-width="1.5"/>
+    <text x="797" y="218" text-anchor="middle" fill="#7c6cf0" font-size="12.5" font-weight="600">AI Layer (Phase 4–6)</text>
+    <text x="797" y="234" text-anchor="middle" fill="#9b9da4" font-size="10.5">Business Advisor · Insight Engine</text>
+
+    <!-- Gain labels under tools -->
+    <text x="508" y="264" fill="#2e5c44" font-size="10.5">✓ Logic ใน DB ครั้งเดียว — ทุก Tool ใช้ข้อมูลเดียวกัน</text>
+    <text x="508" y="280" fill="#2e5c44" font-size="10.5">✓ Dashboard ยังมีครบ + เร็วขึ้น 70–80%</text>
+    <text x="508" y="296" fill="#7c6cf0" font-size="10.5" font-weight="500">✦ AI ทำงานโดยตรงจาก DB — ไม่ผ่าน Power BI</text>
+
+    <!-- ════════════════════════════════════════════
+         ROW 2 — THE BRAIN (final goal)
+    ════════════════════════════════════════════ -->
+
+    <!-- Section divider line -->
+    <line x1="10" y1="358" x2="950" y2="358" stroke="#2e3035" stroke-width="1" stroke-dasharray="4,4"/>
+
+    <!-- Arrow from AI Layer down to The Brain -->
+    <line x1="797" y1="246" x2="797" y2="370" stroke="#7c6cf0" stroke-width="2" stroke-opacity="0.6" marker-end="url(#arr-graph)"/>
+
+    <!-- "The Brain" destination label -->
+    <rect x="10" y="368" width="940" height="28" rx="6" fill="rgba(124,108,240,0.06)" stroke="rgba(124,108,240,0.2)" stroke-width="1"/>
+    <text x="480" y="387" text-anchor="middle" fill="#7c6cf0" font-size="10" letter-spacing="2.5" font-weight="600">FINAL GOAL — The Brain · Phase 6</text>
+
+    <!-- Main The Brain box (glowing) -->
+    <rect x="200" y="410" width="560" height="130" rx="14" fill="rgba(124,108,240,0.08)" stroke="#7c6cf0" stroke-width="2" filter="url(#glow-sm)"/>
+    <!-- outer glow ring -->
+    <rect x="196" y="406" width="568" height="138" rx="16" fill="none" stroke="rgba(124,108,240,0.2)" stroke-width="5"/>
+
+    <!-- Brain icon area -->
+    <circle cx="270" cy="475" r="34" fill="rgba(124,108,240,0.12)" stroke="rgba(124,108,240,0.3)" stroke-width="1.5"/>
+    <text x="270" y="481" text-anchor="middle" font-size="28">🧠</text>
+
+    <!-- The Brain text content -->
+    <text x="480" y="436" text-anchor="middle" fill="#a09af5" font-size="15" font-weight="700" letter-spacing="0.5">The Brain — AI Chatbot</text>
+    <text x="480" y="458" text-anchor="middle" fill="#e8e6e0" font-size="12.5">ถามด้วยภาษาคน → ได้ตัวเลขจริง + บริบท + Next Action ทันที</text>
+
+    <!-- chat bubbles mock -->
+    <rect x="318" y="468" width="360" height="28" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+    <text x="330" y="487" fill="#9b9da4" font-size="11">👤  "ทำไมยอดขายเดือนนี้ต่ำกว่า target?"</text>
+
+    <rect x="318" y="502" width="360" height="28" rx="8" fill="rgba(124,108,240,0.12)" stroke="rgba(124,108,240,0.22)" stroke-width="1"/>
+    <text x="330" y="521" fill="#a09af5" font-size="11">🤖  Lead จาก FB Ads ลด 32% · ช่องทาง LINE ดีที่สุด → ...</text>
+
+    <!-- arrow from brain down to Insight output -->
+    <line x1="480" y1="540" x2="480" y2="562" stroke="#7c6cf0" stroke-width="2" marker-end="url(#arr-graph)"/>
+
+    <!-- Insight output box -->
+    <rect x="180" y="562" width="600" height="68" rx="10" fill="rgba(124,108,240,0.06)" stroke="rgba(124,108,240,0.3)" stroke-width="1.5"/>
+    <text x="480" y="587" text-anchor="middle" fill="#a09af5" font-size="13" font-weight="600">🤖 AI สร้าง Insight + Root Cause + Next Step อัตโนมัติ</text>
+    <text x="480" y="607" text-anchor="middle" fill="#9b9da4" font-size="11.5">ส่งตรงถึงผู้บริหาร — ไม่ต้องรอใครเปิด Dashboard · ไม่ต้องรอ Analyst</text>
+    <text x="480" y="622" text-anchor="middle" fill="#6b6d74" font-size="10.5">ทุกอย่างที่ทำใน Phase 1–5 ยังอยู่ครบ และดีขึ้น — The Brain คือชั้นบนสุด</text>
+
+    <!-- Bottom caption -->
+    <text x="480" y="660" text-anchor="middle" fill="#3a3c42" font-size="11">── Foundation (Phase 1–3) + AI Knowledge (Phase 4–5) รวมกัน = The Brain ที่ตอบได้อย่างน่าเชื่อถือ ──</text>
+
+    <!-- Phase 1-3 label under DB side -->
+    <text x="650" y="315" text-anchor="middle" fill="#4caf82" font-size="10" letter-spacing="1.5" font-weight="600">▲ Phase 1–3 · Data Foundation</text>
+    <!-- Phase 4-5 label -->
+    <text x="797" y="315" text-anchor="middle" fill="#7c6cf0" font-size="10" letter-spacing="1.5" font-weight="600">▲ Phase 4–5 · AI Layer</text>
+
+  </svg>
+</section>
+
+<!-- ─── ROADMAP ─── -->
+<section id="roadmap">
+  <p class="section-label reveal">03 — แผนงาน 6 ระยะ</p>
+  <h2 class="reveal">Foundation ก่อน,<br><em>แล้ว AI จะไม่โกหก</em></h2>
+
+  <div class="logic-banner reveal">
+    <div class="icon">🏗️</div>
+    <p><strong>ทำไม Foundation ต้องมาก่อน AI:</strong> AI ตอบได้ดีแค่ไหน ขึ้นอยู่กับคุณภาพของ Data ที่มัน "เห็น" — ถ้า Data ยังกระจาย Business Logic ยังอยู่ใน Power Query AI จะ hallucinate ตอบผิด และไม่น่าเชื่อถือ Phase 1–3 คือการสร้างระบบ "ความทรงจำ" ขององค์กรให้ครบก่อน แล้ว AI Phase 4–6 จึงจะทำงานได้อย่างแม่นยำและเชื่อถือได้จริง</p>
+  </div>
+
+  <div class="focus-banner reveal">
+    <div class="icon">📌</div>
+    <div>
+      <div class="focus-banner-title">Data Intelligence Plan — Phase แรก: Sales & Revenue Model</div>
+      <p>Data Intelligence Plan เป็นแผนงานภาพรวมสำหรับทั้งองค์กร — Phase แรกที่เราจะทำคือ Sales & Revenue Model ซึ่ง Focus ที่ข้อมูลรายได้และการขายก่อน แล้วจึงขยายไปยังโดเมนอื่นตามลำดับ</p>
+      <div class="focus-domains">
+        <span class="focus-domain">💰 ยอดขาย (Sales)</span>
+        <span class="focus-domain">📣 การตลาด (Marketing)</span>
+        <span class="focus-domain">🎯 Leads & Funnel</span>
+        <span class="focus-domain">🏆 Target Tracking</span>
+        <span class="focus-domain">📊 Marketing Spend & ROAS</span>
+        <span class="focus-domain">👥 Sales Performance</span>
+        <span class="focus-domain">📉 P&amp;L Statement</span>
+        <span class="focus-domain">💹 Margin & Profit</span>
+        <span class="focus-domain focus-domain future">🔜 Customer & CRM</span>
+        <span class="focus-domain focus-domain future">🔜 Retention & Churn</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ FUNDAMENTAL PHASES 1–3 ═══ -->
+  <div class="phase-divider reveal">
+    <div class="phase-divider-line"></div>
+    <div class="phase-divider-label fundamental">Phase 1–3 · Data Foundation</div>
+    <div class="phase-divider-line"></div>
+  </div>
+
+  <div class="phase-list">
+
+    <!-- Phase 1 -->
+    <div class="phase-item reveal" id="phase1">
+      <div class="phase-left">
+        <div class="phase-num">01</div>
+        <div><div class="phase-tag">Data Foundation</div></div>
+      </div>
+      <div class="phase-right">
+        <div class="phase-title">Data Model ใน Database</div>
+        <p class="phase-desc">ย้าย Business Logic ออกจาก Power Query มาไว้ใน Supabase ให้ครั้งเดียว ใช้ได้ตลอดกาล ข้อมูลทุกแหล่ง (Google Sheet, Zoho, Web App) มาพบกันที่จุดเดียว ผ่าน Business Condition ที่ validate แล้ว ออกแบบเป็น Star Schema — 1 Fact Table, 6 Dimension Tables ครอบคลุม Sales, Lead, Marketing, Product, Target, และ Finance (P&amp;L, Margin)</p>
+        <div class="phase-why">
+          <strong>ทำไมต้องทำก่อนทุกอย่าง:</strong> Data Model ที่ดีคือ Foundation ของทั้ง 5 Phase ที่เหลือ — ถ้าไม่มี Data Model ที่ถูกต้อง Dashboard ก็ผิด, Data Hub ก็ผิด, และ AI ก็จะตอบผิดตามไปด้วย
+        </div>
+        <div class="tags">
+          <span class="tag accent">Single Source of Truth</span>
+          <span class="tag accent">Report เร็วขึ้นทันที</span>
+          <span class="tag">Supabase PostgreSQL</span>
+          <span class="tag">Star Schema</span>
+          <span class="tag">P&amp;L · Margin · Profit</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="phase-item reveal" id="phase2">
+      <div class="phase-left" style="background: rgba(76,175,130,0.04); border-right-color: rgba(76,175,130,0.15);">
+        <div class="phase-num" style="color: rgba(76,175,130,0.25);">02</div>
+        <div><div class="phase-tag" style="color: var(--green);">Reporting Layer</div></div>
+      </div>
+      <div class="phase-right">
+        <div class="phase-title">Dashboard Report</div>
+        <p class="phase-desc">สร้าง Dashboard 17 หน้าบน Power BI ที่ connect จาก Data Model โดยตรง — ครอบคลุม Actual vs Target, Lead Analysis, Marketing Performance, P&amp;L Overview, Product Performance, Leaderboard, Time Intelligence และ Transaction Detail ทุก dimension ที่ Sales, Finance, และ Management ต้องการ</p>
+
+        <div class="compare-block">
+          <div class="compare-col old">
+            <div class="compare-header old">❌ แบบเดิม — Raw เข้า Power BI</div>
+            <div class="compare-body">
+              <div class="compare-row"><span class="ci">✗</span> ยัด raw data หลายแหล่งเข้าโดยตรง</div>
+              <div class="compare-row"><span class="ci">✗</span> Business Logic ทำใน Power Query — transform ทุกโหลด</div>
+              <div class="compare-row"><span class="ci">✗</span> โหลดช้า ยิ่งข้อมูลมากยิ่งแย่</div>
+              <div class="compare-row"><span class="ci">✗</span> แก้ logic ต้องแก้ทุก report</div>
+              <div class="compare-row"><span class="ci">✗</span> ไม่รู้ที่มาของตัวเลข</div>
+            </div>
+          </div>
+          <div class="compare-col new">
+            <div class="compare-header new">✅ แบบใหม่ — Connect จาก DB</div>
+            <div class="compare-body">
+              <div class="compare-row"><span class="ci">✓</span> Power BI connect จาก Data Model สะอาดแล้ว</div>
+              <div class="compare-row"><span class="ci">✓</span> Logic ใน DB — Power BI แค่ Visualize</div>
+              <div class="compare-row"><span class="ci">✓</span> โหลดเร็วขึ้น 70–80% ด้วย In-Memory</div>
+              <div class="compare-row"><span class="ci">✓</span> แก้ logic ที่ DB ครั้งเดียว ทุก report อัปเดต</div>
+              <div class="compare-row"><span class="ci">✓</span> มีสารบัญสูตรทุก Measure ใน หน้า 17</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-why" style="margin-top: 16px;">
+          <strong>ความต่างหลัก:</strong> เดิม Power BI เป็นทั้ง ETL + Transform + Visualize — ใหม่ Power BI ทำหน้าที่เดียวคือ Visualization ส่วน Logic ทั้งหมดอยู่ใน DB แล้ว
+        </div>
+        <div class="tags" style="margin-bottom: 16px;">
+          <span class="tag" style="border-color: var(--green); color: var(--green); background: rgba(76,175,130,0.07);">17 หน้า Dashboard</span>
+          <span class="tag" style="border-color: var(--green); color: var(--green); background: rgba(76,175,130,0.07);">Time Intelligence</span>
+          <span class="tag">Incremental Refresh</span>
+          <span class="tag">P&amp;L · Finance View</span>
+        </div>
+        <a href="https://docs.google.com/document/d/1ns8DLOobMHk4ebx8Ec1edGaBJZAx7W1WI2LzBF1VAzU/edit?usp=sharing" target="_blank" class="phase-link-btn">
+          📄 ดูรายละเอียด Dashboard ทั้งหมด →
+        </a>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="phase-item reveal" id="phase3">
+      <div class="phase-left">
+        <div class="phase-num">03</div>
+        <div><div class="phase-tag">Self-Service</div></div>
+      </div>
+      <div class="phase-right">
+        <div class="phase-title">Data Hub</div>
+        <p class="phase-desc">สร้าง interface ให้ User เชื่อมต่อ Data Model แล้วลากข้อมูลเองได้เลย ไม่จำกัดแค่ Report ที่ทีม Data สร้างให้ — User ทุกคนสามารถตั้งคำถามและตอบด้วยตัวเองได้ทันที โดยมี Data Dictionary และ Semantic Model ประกอบ ทำให้ Sales, Finance, และ Management สร้าง Report ของตัวเองได้โดยไม่ต้องรอ</p>
+        <div class="phase-why">
+          <strong>เปลี่ยน Bottleneck:</strong> จาก "ทีม Data เป็นคนกลางทุกอย่าง" เป็น "ทุกคนขับเคลื่อนด้วยข้อมูลได้เอง" — Data Dictionary ที่สร้างตรงนี้จะกลายเป็น Knowledge Base ที่ AI Phase 4 ใช้ตอบคำถามได้ทันที
+        </div>
+        <div class="tags" style="margin-bottom: 16px;">
+          <span class="tag accent">Self-Service Analytics</span>
+          <span class="tag accent">ลด Dependency</span>
+          <span class="tag">Power BI Semantic Model</span>
+          <span class="tag">Data Dictionary</span>
+        </div>
+        <a href="https://drive.google.com/file/d/1JtRiSPLYuJ-aYKcPb0LmuPwUN6cO_Vye/view?usp=sharing" target="_blank" class="phase-link-btn phase-link-btn-video">
+          ▶ ดูวิดีโอตัวอย่างการใช้งาน Data Hub →
+        </a>
+      </div>
+    </div>
+
+  </div><!-- end phase-list fundamental -->
+
+  <!-- ═══ AI PHASES 4–6 ═══ -->
+  <div class="phase-divider reveal" style="margin-top: 48px;">
+    <div class="phase-divider-line"></div>
+    <div class="phase-divider-label ai-layer">Phase 4–6 · AI Layer</div>
+    <div class="phase-divider-line"></div>
+  </div>
+
+  <div class="why-ai-box reveal">
+    <div class="icon">🤖</div>
+    <div>
+      <div class="why-ai-box-title">ทำไมต้องสร้าง AI — ปัญหาที่คนแก้ไม่ได้</div>
+      <p>ปัญหาจริงไม่ใช่แค่ "ไม่มีคน analysis" — แต่คือ <strong>หาคนเก่งยาก คนที่มีก็อยู่ไม่นาน และเมื่อออกไปก็พาทุกอย่างไปด้วย</strong> AI Agent ไม่ใช่แค่ทางเลือก แต่เป็นคำตอบถาวรที่ไม่ลาออก ไม่ลืม และไม่มองแค่มุมเดิม — แต่ต้องทำ Phase 1–3 ให้เสร็จก่อน เพราะ AI ตอบถูกได้ก็ต่อเมื่อ Data ถูกต้อง</p>
+    </div>
+  </div>
+
+  <div class="phase-list">
+
+    <!-- Phase 4 — AI Business Advisor -->
+    <div class="phase-item reveal" id="phase4">
+      <div class="phase-left" style="background: rgba(124,108,240,0.05); border-right-color: rgba(124,108,240,0.2);">
+        <div class="phase-num" style="color: rgba(124,108,240,0.3);">04</div>
+        <div><div class="phase-tag" style="color: var(--graph);">AI Layer 1</div></div>
+      </div>
+      <div class="phase-right">
+        <div class="phase-title">AI Agent — Business Advisor</div>
+        <p class="phase-desc">Chatbot ที่เข้าใจ Business Logic ทั้งหมด — อธิบายได้ว่าแต่ละ Field คืออะไร คำนวณอย่างไร ถ้าอยากดู X ควรใช้ตัวไหน ตอบในมุม Business ล้วนๆ ไม่ตอบออกมาเป็นตัวเลข แต่ช่วยให้ User ใช้ Data Hub ได้อย่างถูกต้องโดยไม่ต้องมาถามทีม 24 ชั่วโมง</p>
+        <div class="phase-why">
+          <strong>ทำไมต้องมี Phase 1–3 ก่อน:</strong> Agent ต้องมี Data Dictionary ที่ครบและ Business Logic ที่ถูกต้องก่อน — ถ้าไม่มี Foundation AI จะตอบผิด hallucinate และทำให้ User เสียความเชื่อมั่น
+        </div>
+
+        <div class="ai-stack">
+          <div class="ai-stack-title">Tech Stack — AI Layer</div>
+          <div class="ai-stack-row">
+            <span class="ast-node hi">LLM</span>
+            <span class="ast-arrow">+</span>
+            <span class="ast-node hi">RAG</span>
+            <span class="ast-arrow">+</span>
+            <span class="ast-node hi">Knowledge Graph</span>
+            <span class="ast-arrow">+</span>
+            <span class="ast-node">Data Dictionary</span>
+            <span class="ast-arrow">+</span>
+            <span class="ast-node">Supabase DB</span>
+          </div>
+          <div class="ast-benefit">
+            การใช้ <strong>Knowledge Graph ร่วมกับ RAG และ LLM</strong> ช่วยให้ AI เข้าใจ "ความสัมพันธ์" ระหว่าง field และ metric ได้ — ไม่ใช่แค่ตอบแบบ isolated แต่ตอบแบบ chain ได้ว่า metric ผิดปกตินั้น upstream มาจากอะไร ซึ่งเป็นข้อได้เปรียบสำคัญของ Stack นี้
+          </div>
+        </div>
+
+        <div class="tags" style="margin-top: 16px;">
+          <span class="tag graph">LLM + RAG</span>
+          <span class="tag graph">Knowledge Graph</span>
+          <span class="tag accent">24/7 Support</span>
+          <span class="tag">Data Dictionary</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 5 — AI Insight Engine -->
+    <div class="phase-item reveal" id="phase5">
+      <div class="phase-left" style="background: rgba(76,175,130,0.04); border-right-color: rgba(76,175,130,0.15);">
+        <div class="phase-num" style="color: rgba(76,175,130,0.25);">05</div>
+        <div><div class="phase-tag" style="color: var(--green);">AI Layer 2</div></div>
+      </div>
+      <div class="phase-right">
+        <div class="phase-title">AI Insight Engine — เห็นก่อนคนถาม</div>
+        <p class="phase-desc">Agent ที่รันทุกสัปดาห์โดยอัตโนมัติ — เข้าถึง Data Model โดยตรง วิเคราะห์ความเบี่ยงเบน เทรนด์ที่น่ากังวล และ Opportunity ที่ซ่อนอยู่ แล้วสรุปออกมาเป็น <strong>รายการปัญหาและโอกาสทั้งหมดของสัปดาห์นั้นๆ เรียงลำดับตาม Impact ที่จะส่งผลต่อธุรกิจ</strong> พร้อม Next Step ส่งให้ผู้บริหารโดยตรง — ไม่ใช่ Chatbot แต่เป็น autonomous analyst ที่ทำงานเองโดยไม่ต้องถาม</p>
+        <div class="phase-why">
+          <strong>แก้ปัญหาที่แท้จริง:</strong> ไม่ใช่แค่ไม่มีคน analysis — แต่คือคนเก่งหายาก อยู่ไม่นาน และมองแค่มุมเดิม Agent ตัวนี้คือ Senior Analyst ที่ทำงาน 24/7 ไม่ลาออก ไม่มีวัน burn out และ coverage ทุก dimension พร้อมกัน
+        </div>
+        <div class="tags">
+          <span class="tag green">Automated Insight</span>
+          <span class="tag green">Ranked by Impact</span>
+          <span class="tag">Weekly Digest</span>
+          <span class="tag">Anomaly Detection</span>
+          <span class="tag">Next Step Recommendation</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 6 — The Brain -->
+    <div class="phase-item reveal" id="phase6">
+      <div class="phase-left" style="background: rgba(91,156,240,0.05); border-right-color: rgba(91,156,240,0.2);">
+        <div class="phase-num" style="color: rgba(91,156,240,0.3);">06</div>
+        <div><div class="phase-tag" style="color: var(--blue);">AI Layer 3 · Peak</div></div>
+      </div>
+      <div class="phase-right">
+        <div class="phase-title">The Brain — ถามได้ ตอบได้ ทำงานได้เลย</div>
+        <p class="phase-desc">ยอดของ Pyramid — รวม Business Intelligence จาก Phase 4 และ Analyst Logic จาก Phase 5 เข้าด้วยกัน กลายเป็น AI ที่ <strong>ถามแล้วได้ตัวเลขจริง + บริบท + Next Action ออกมาทันที</strong> ไม่ต้องเปิด Dashboard ไม่ต้องรอ query — ถามว่า "เดือนนี้ทำไม Lead ลด? ช่องทางไหนปัญหา?" แล้วได้คำตอบพร้อม recommendation ทันที</p>
+        <div class="phase-why">
+          <strong>ทำไมนี่คือ Final Mission:</strong> Phase นี้คือเป้าหมายสูงสุด — ตัดวงจร "มีคำถาม → รอ Data Team → รอ Report" ออกทั้งหมด ทุกคนในองค์กรขับเคลื่อนด้วย Intelligence แบบ Real-time ได้ทุกเวลา และนี่คือสิ่งที่คนทำไม่ได้ แต่ AI ทำได้
+        </div>
+        <div class="tags">
+          <span class="tag blue">Text-to-Insight</span>
+          <span class="tag blue">Decision Intelligence</span>
+          <span class="tag">Natural Language Query</span>
+          <span class="tag">Full Stack AI</span>
+          <span class="tag">SQL Generation</span>
+          <span class="tag">Action Recommendation</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end ai phase-list -->
+
+</section>
+
+
+<!-- ─── IMPACT ─── -->
+<section id="impact">
+  <p class="section-label reveal">03 — Business Value</p>
+  <h2 class="reveal">แต่ละ Phase<em>ให้อะไรกับ Business</em></h2>
+
+  <div class="impact-grid reveal">
+    <div class="impact-card critical">
+      <div class="impact-phase">Phase 1 · Data Model</div>
+      <div class="impact-title">ตัวเลขเชื่อถือได้ ทุกคน ทุก Tool</div>
+      <div class="impact-desc">ลด transform time ออกทั้งหมด ตัวเลขทุก platform ตรงกัน ครอบคลุม Sales + Finance + Marketing ในที่เดียว</div>
+      <div class="impact-level"><span class="dot"></span>Critical Foundation</div>
+    </div>
+    <div class="impact-card high">
+      <div class="impact-phase">Phase 2 · Dashboard Report</div>
+      <div class="impact-title">เห็น Revenue ครบ 360° ทันที</div>
+      <div class="impact-desc">17 หน้า ครอบคลุม Sales, Lead, Marketing, P&amp;L, Target, Leaderboard — Management ตัดสินใจได้เร็วขึ้น มั่นใจขึ้น</div>
+      <div class="impact-level"><span class="dot"></span>High Impact</div>
+    </div>
+    <div class="impact-card medium">
+      <div class="impact-phase">Phase 3 · Data Hub</div>
+      <div class="impact-title">ทุก Team ตอบตัวเองได้ทันที</div>
+      <div class="impact-desc">ลด lead time จากวันเป็นนาที Sales, Finance, Marketing สร้าง Report เองได้ ทีม Data มีเวลาทำงานมูลค่าสูง</div>
+      <div class="impact-level"><span class="dot"></span>High · Self-Service</div>
+    </div>
+    <div class="impact-card" style="background: var(--surface);">
+      <div style="position:absolute; top:0; left:0; right:0; height:2px; background: var(--graph);"></div>
+      <div class="impact-phase">Phase 4 · AI Business Advisor</div>
+      <div class="impact-title">AI คือ Support Team ที่ไม่ลาออก</div>
+      <div class="impact-desc">Onboard คนใหม่เร็วขึ้น ลด Support workload ไม่มี hallucination เพราะมี Knowledge Base ที่ครบรองรับ</div>
+      <div class="impact-level" style="color: var(--graph);"><span class="dot" style="background: var(--graph);"></span>Knowledge-Powered</div>
+    </div>
+    <div class="impact-card high">
+      <div class="impact-phase">Phase 5 · AI Insight Engine</div>
+      <div class="impact-title">Senior Analyst ที่ไม่เคยลาออก</div>
+      <div class="impact-desc">หา Risk และ Opportunity ทุกสัปดาห์ ที่คนมองข้าม — แก้ปัญหาคนหายาก + ความรู้ไม่ไหลออกจากองค์กร</div>
+      <div class="impact-level"><span class="dot"></span>High Impact</div>
+    </div>
+    <div class="impact-card transform">
+      <div class="impact-phase">Phase 6 · The Brain</div>
+      <div class="impact-title">ถามแล้วได้ Intelligence ทันที</div>
+      <div class="impact-desc">ตัดวงจรรอ Data Team ออกทั้งหมด ทุกคนขับเคลื่อนด้วย Data ได้ทุกระดับ ทุกเวลา — นี่คือ Competitive Advantage ที่แท้จริง</div>
+      <div class="impact-level"><span class="dot"></span>Transformative</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BUSINESS GETS ─── -->
+<section>
+  <p class="section-label reveal">04 — ผลลัพธ์ที่ได้</p>
+  <h2 class="reveal">Business ได้<em>อะไรจาก Plan นี้</em></h2>
+
+  <div class="value-grid reveal">
+    <div class="value-card">
+      <div class="value-icon">⚡</div>
+      <h3>ตัดเวลาที่เสียไปกับข้อมูล</h3>
+      <p>ไม่มี transform ซ้ำๆ ไม่มีรอ query ไม่มีเถียงกันเรื่องตัวเลข — ทุกคนเริ่มจาก Source of Truth เดียวกัน ตัดสินใจได้เร็วและมั่นใจขึ้น</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">📊</div>
+      <h3>เห็น Revenue ครบทุกมิติ</h3>
+      <p>ยอดขาย, Lead Funnel, Marketing ROI, P&amp;L, Margin, Target Gap, Leaderboard — ทั้งหมดในที่เดียว เปรียบเทียบข้ามเวลาได้ทันที</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🤝</div>
+      <h3>ทุก Team พึ่งตัวเองได้</h3>
+      <p>Sales, Marketing, Finance, Management สร้าง Report เองได้ ถามคำถามใหม่ได้เอง — ความเร็วในการตัดสินใจเพิ่มขึ้นอย่างมีนัย</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🧠</div>
+      <h3>ความรู้ไม่ไหลออกจากองค์กร</h3>
+      <p>ไม่ว่าคนจะเข้าออกแค่ไหน Business Logic และ Knowledge ทั้งหมดถูก encode ไว้ใน AI — ไม่ต้อง onboard ใหม่ ไม่เสีย context</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">💬</div>
+      <h3>ถามเป็นภาษาคน ได้ Intelligence</h3>
+      <p>ผู้บริหารถาม "ทำไม Lead เดือนนี้ลด?" แล้วได้คำตอบ + Root Cause + Next Step ออกมาทันที โดยไม่ต้องเปิด Dashboard</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🏗️</div>
+      <h3>Foundation ที่ขยายได้ในอนาคต</h3>
+      <p>Revenue Intelligence Model คือ Phase แรก — สามารถ extend ไปยัง Customer, CRM, Retention, Churn และโดเมนอื่นได้โดยไม่ต้องเริ่มใหม่</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Data Intelligence Plan · Executive Brief 2026</span>
+  <span>Confidential</span>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), 60);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
