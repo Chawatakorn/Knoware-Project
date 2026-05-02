@@ -870,6 +870,122 @@ h2 em { font-style: italic; color: var(--muted2); }
 
 .quote-break blockquote em { color: var(--accent); font-style: italic; }
 
+/* ─── MOCKUP CTA BUTTON ─── */
+.mockup-cta-btn {
+  display: block;
+  text-decoration: none;
+  background: linear-gradient(135deg, rgba(76,175,130,0.08) 0%, rgba(76,175,130,0.03) 100%);
+  border: 1.5px solid rgba(76,175,130,0.45);
+  border-radius: 16px;
+  padding: 24px 28px 16px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  max-width: 680px;
+}
+
+.mockup-cta-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(76,175,130,0.12) 0%, rgba(76,175,130,0.04) 100%);
+  opacity: 0;
+  transition: opacity 0.25s;
+  border-radius: 14px;
+}
+
+.mockup-cta-btn:hover {
+  border-color: rgba(76,175,130,0.75);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(76,175,130,0.18), 0 0 0 1px rgba(76,175,130,0.2);
+}
+
+.mockup-cta-btn:hover::before { opacity: 1; }
+.mockup-cta-btn:active { transform: translateY(0); }
+
+.mockup-cta-inner {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.mockup-cta-icon-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.mockup-cta-icon {
+  font-size: 32px;
+  display: block;
+  line-height: 1;
+  filter: drop-shadow(0 0 8px rgba(76,175,130,0.5));
+}
+
+.mockup-cta-pulse {
+  position: absolute;
+  top: -4px; right: -4px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 0 rgba(76,175,130,0.6);
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(76,175,130,0.6); }
+  70%  { box-shadow: 0 0 0 8px rgba(76,175,130,0); }
+  100% { box-shadow: 0 0 0 0 rgba(76,175,130,0); }
+}
+
+.mockup-cta-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.mockup-cta-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 22px;
+  color: var(--green);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.mockup-cta-sub {
+  font-size: 12.5px;
+  color: var(--muted2);
+  letter-spacing: 0.01em;
+}
+
+.mockup-cta-arrow {
+  font-size: 24px;
+  color: var(--green);
+  opacity: 0.7;
+  transition: transform 0.2s, opacity 0.2s;
+  flex-shrink: 0;
+}
+
+.mockup-cta-btn:hover .mockup-cta-arrow {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
+.mockup-cta-hint {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(76,175,130,0.18);
+  font-size: 11.5px;
+  color: rgba(76,175,130,0.65);
+  letter-spacing: 0.06em;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 760px) {
   .phase-item { grid-template-columns: 1fr; }
@@ -2115,133 +2231,22 @@ footer {
           <span class="tag">Incremental Refresh</span>
           <span class="tag">P&amp;L · Finance View</span>
         </div>
-        <!-- ── DASHBOARD MOCKUP ── -->
-        <div class="mockup-preview-wrap" style="margin: 20px 0 20px;">
-          <div class="mockup-label-row">
-            <span class="mockup-badge" style="background:rgba(76,175,130,0.1);border-color:rgba(76,175,130,0.3);color:var(--green);">📊 ตัวอย่าง Dashboard Report — Power BI</span>
-            <span class="mockup-sub">17 หน้า · Actual vs Target · Marketing · P&amp;L</span>
-          </div>
-          <div class="db-mockup">
-            <!-- Top bar -->
-            <div class="db-topbar">
-              <div class="db-dot" style="background:#ff5f57"></div>
-              <div class="db-dot" style="background:#febc2e"></div>
-              <div class="db-dot" style="background:#28c840"></div>
-              <span class="db-title-bar">Mock Up Sales Model &nbsp;|&nbsp; Data updated 5/2/26 ▾</span>
-              <div style="margin-left:auto;display:flex;gap:8px;align-items:center;">
-                <span class="db-nav-btn">Page 1</span>
-                <span class="db-nav-btn active">Page 2</span>
-                <span class="db-nav-btn">+ 15</span>
+        <!-- ── DASHBOARD MOCKUP CTA ── -->
+        <div class="mockup-cta-wrap" style="margin: 24px 0 20px;">
+          <a href="https://chawatakorn.github.io/KR-dashboard-sales-mockup/" target="_blank" class="mockup-cta-btn">
+            <div class="mockup-cta-inner">
+              <div class="mockup-cta-icon-wrap">
+                <span class="mockup-cta-icon">📊</span>
+                <span class="mockup-cta-pulse"></span>
               </div>
+              <div class="mockup-cta-text">
+                <span class="mockup-cta-title">ดู Mockup Dashboard ได้เลย</span>
+                <span class="mockup-cta-sub">17 หน้า · Sales · Marketing · Lead Funnel · P&amp;L · Leaderboard</span>
+              </div>
+              <div class="mockup-cta-arrow">→</div>
             </div>
-            <!-- Slicer + Content -->
-            <div class="db-body">
-              <!-- Left slicer -->
-              <div class="db-slicer">
-                <div class="slicer-label">Year</div>
-                <div class="slicer-chip active">■ 2026</div>
-                <div class="slicer-label" style="margin-top:14px;">MonthYear</div>
-                <div class="slicer-chip active">■ Jan 2026</div>
-                <div class="slicer-chip">□ Feb 2026</div>
-                <div class="slicer-chip">□ Mar 2026</div>
-                <div class="slicer-chip">□ Apr 2026</div>
-                <div class="slicer-chip">□ May 2026</div>
-                <div class="slicer-chip muted">□ Jun 2026</div>
-                <div class="slicer-chip muted">□ Jul 2026</div>
-              </div>
-              <!-- Main content -->
-              <div class="db-main">
-                <!-- KPI row -->
-                <div class="db-kpi-row">
-                  <div class="db-kpi">
-                    <div class="kpi-label">Net Sales (All)</div>
-                    <div class="kpi-val green">1,114,634</div>
-                    <div class="kpi-sub">vs Target ▲ 112%</div>
-                  </div>
-                  <div class="db-kpi">
-                    <div class="kpi-label">Net Sales (New)</div>
-                    <div class="kpi-val green">1,114,634</div>
-                    <div class="kpi-sub">Jan 2026 only</div>
-                  </div>
-                  <div class="db-kpi">
-                    <div class="kpi-label">Closed (New)</div>
-                    <div class="kpi-val accent">25</div>
-                    <div class="kpi-sub">Deals closed</div>
-                  </div>
-                  <div class="db-kpi">
-                    <div class="kpi-label">Closed (All)</div>
-                    <div class="kpi-val accent">25</div>
-                    <div class="kpi-sub">Total orders</div>
-                  </div>
-                </div>
-
-                <!-- Summary table -->
-                <div class="db-table-wrap">
-                  <div class="db-table-title">📅 Monthly Summary</div>
-                  <table class="db-table">
-                    <thead>
-                      <tr>
-                        <th>MonthYear</th><th>net_sales_all</th><th>net_sales_con</th><th>net_sales_new</th><th>closed_con</th><th>closed_new</th><th>closed_all</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="highlight-row">
-                        <td>Jan 2026</td><td class="num green">1,114,634</td><td class="num">—</td><td class="num green">1,114,634</td><td class="num">—</td><td class="num accent">25</td><td class="num accent">25</td>
-                      </tr>
-                      <tr class="total-row">
-                        <td><strong>Total</strong></td><td class="num green"><strong>1,114,634</strong></td><td class="num">—</td><td class="num green"><strong>1,114,634</strong></td><td class="num">—</td><td class="num accent"><strong>25</strong></td><td class="num accent"><strong>25</strong></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <!-- Marketing channel table -->
-                <div class="db-table-wrap" style="margin-top:14px;">
-                  <div class="db-table-title">📣 Marketing Channel Breakdown</div>
-                  <table class="db-table">
-                    <thead>
-                      <tr>
-                        <th>marketing_channel</th><th>ads_spent</th><th>impression</th><th>click</th><th>reach</th><th>closed_new</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td><span class="ch-badge fb">Facebook Ads</span></td>
-                        <td class="num">402,372</td><td class="num">8,387,989</td><td class="num blue">403,315</td><td class="num">98,358</td><td class="num green">17</td>
-                      </tr>
-                      <tr>
-                        <td><span class="ch-badge line">Line Ads</span></td>
-                        <td class="num">74,091</td><td class="num">4,350,674</td><td class="num blue">2,890</td><td class="num">2,551,459</td><td class="num green">5</td>
-                      </tr>
-                      <tr>
-                        <td><span class="ch-badge organic">Organic</span></td>
-                        <td class="num muted">—</td><td class="num muted">—</td><td class="num muted">—</td><td class="num muted">—</td><td class="num green">1</td>
-                      </tr>
-                      <tr>
-                        <td><span class="ch-badge other">Other</span></td>
-                        <td class="num muted">—</td><td class="num muted">—</td><td class="num muted">—</td><td class="num muted">—</td><td class="num green">2</td>
-                      </tr>
-                      <tr class="total-row">
-                        <td><strong>Total</strong></td>
-                        <td class="num"><strong>476,463</strong></td><td class="num"><strong>8,387,989</strong></td><td class="num blue"><strong>101,248</strong></td><td class="num"><strong>6,001,596</strong></td><td class="num green"><strong>25</strong></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <!-- Page tabs -->
-                <div class="db-page-tabs">
-                  <span class="db-page-tab">Overview</span>
-                  <span class="db-page-tab active">Marketing</span>
-                  <span class="db-page-tab">Lead Funnel</span>
-                  <span class="db-page-tab">Leaderboard</span>
-                  <span class="db-page-tab">P&amp;L</span>
-                  <span class="db-page-tab">Time Intel</span>
-                  <span class="db-page-tab muted">+11</span>
-                </div>
-              </div>
-            </div>
-          </div>
+            <div class="mockup-cta-hint">คลิกเพื่อเปิดตัวอย่าง Dashboard แบบ Interactive</div>
+          </a>
         </div>
         <a href="https://docs.google.com/document/d/1ns8DLOobMHk4ebx8Ec1edGaBJZAx7W1WI2LzBF1VAzU/edit?usp=sharing" target="_blank" class="phase-link-btn">
           📄 ดูรายละเอียด Dashboard ทั้งหมด →
