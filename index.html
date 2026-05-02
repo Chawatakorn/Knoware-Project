@@ -903,7 +903,407 @@ footer {
 
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ─── PHASE LINK BUTTONS ─── */
+/* ─── MOCKUP PREVIEWS ─── */
+.mockup-preview-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border2);
+  background: var(--surface);
+}
+
+.mockup-label-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface2);
+  flex-wrap: wrap;
+}
+
+.mockup-badge {
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 6px;
+  border: 1px solid;
+  letter-spacing: 0.02em;
+}
+
+.mockup-sub {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ─── DB MOCKUP (Dashboard Report) ─── */
+.db-mockup, .dh-mockup {
+  font-size: 12px;
+  font-family: 'Outfit', sans-serif;
+  background: #1a1c1e;
+}
+
+.db-topbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: #111315;
+  border-bottom: 1px solid #2a2c30;
+}
+
+.db-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+.db-title-bar {
+  font-size: 11px;
+  color: #9b9da4;
+  margin-left: 8px;
+  letter-spacing: 0.02em;
+}
+
+.db-nav-btn {
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: 5px;
+  border: 1px solid #2e3035;
+  color: #6b6d74;
+  cursor: default;
+}
+
+.db-nav-btn.active {
+  border-color: rgba(76,175,130,0.4);
+  color: var(--green);
+  background: rgba(76,175,130,0.08);
+}
+
+.db-body {
+  display: flex;
+  min-height: 380px;
+}
+
+.db-slicer {
+  width: 130px;
+  min-width: 130px;
+  padding: 12px 10px;
+  border-right: 1px solid #2a2c30;
+  background: #111315;
+}
+
+.slicer-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #6b6d74;
+  margin-bottom: 6px;
+  margin-top: 4px;
+}
+
+.slicer-chip {
+  font-size: 11px;
+  color: #9b9da4;
+  padding: 3px 6px;
+  border-radius: 4px;
+  margin-bottom: 3px;
+  cursor: default;
+}
+
+.slicer-chip.active { color: #e8e6e0; font-weight: 500; }
+.slicer-chip.muted { color: #4a4c54; }
+
+.db-main {
+  flex: 1;
+  padding: 14px 16px;
+  overflow: auto;
+}
+
+.db-kpi-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.db-kpi {
+  flex: 1;
+  background: #111315;
+  border: 1px solid #2a2c30;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.kpi-label { font-size: 10px; color: #6b6d74; margin-bottom: 4px; }
+.kpi-val { font-size: 18px; font-weight: 600; }
+.kpi-val.green { color: var(--green); }
+.kpi-val.accent { color: var(--accent); }
+.kpi-sub { font-size: 10px; color: #4a4c54; margin-top: 2px; }
+
+.db-table-wrap {
+  background: #111315;
+  border: 1px solid #2a2c30;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.db-table-title {
+  font-size: 11px;
+  font-weight: 500;
+  color: #9b9da4;
+  padding: 8px 12px;
+  border-bottom: 1px solid #2a2c30;
+  background: #0d0f10;
+}
+
+.db-table, .dh-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.db-table th, .dh-table th {
+  background: #161819;
+  color: #6b6d74;
+  font-weight: 500;
+  text-align: left;
+  padding: 6px 10px;
+  border-bottom: 1px solid #2a2c30;
+  white-space: nowrap;
+}
+
+.db-table td, .dh-table td {
+  padding: 5px 10px;
+  border-bottom: 1px solid #1e2022;
+  color: #c8c6c0;
+}
+
+.db-table tr:last-child td, .dh-table tr:last-child td { border-bottom: none; }
+
+.highlight-row td { background: rgba(76,175,130,0.04); }
+.total-row td { background: #0d0f10; color: #e8e6e0; }
+
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+.num.green { color: var(--green); }
+.num.accent { color: var(--accent); }
+.num.blue { color: var(--blue); }
+.num.muted { color: #4a4c54; }
+
+.ch-badge {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+.ch-badge.fb { background: rgba(91,156,240,0.15); color: var(--blue); }
+.ch-badge.line { background: rgba(76,175,130,0.15); color: var(--green); }
+.ch-badge.organic { background: rgba(200,168,75,0.15); color: var(--gold); }
+.ch-badge.other { background: rgba(155,157,164,0.15); color: #9b9da4; }
+
+.db-page-tabs {
+  display: flex;
+  gap: 6px;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid #2a2c30;
+  flex-wrap: wrap;
+}
+
+.db-page-tab {
+  font-size: 10px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  color: #6b6d74;
+  border: 1px solid #2a2c30;
+  cursor: default;
+}
+
+.db-page-tab.active {
+  border-color: rgba(232,131,74,0.4);
+  color: var(--accent);
+  background: rgba(232,131,74,0.08);
+}
+
+.db-page-tab.muted { color: #3a3c42; border-color: #1e2022; }
+
+/* ─── DATA HUB MOCKUP ─── */
+.dh-body {
+  display: flex;
+  min-height: 520px;
+}
+
+.dh-canvas {
+  flex: 1;
+  padding: 14px;
+  border-right: 1px solid #2a2c30;
+}
+
+.dh-canvas-label {
+  font-size: 10px;
+  color: #3a3c42;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.dh-visual-built {
+  background: #111315;
+  border: 1px solid #2a2c30;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.dh-visual-title {
+  font-size: 11px;
+  color: #9b9da4;
+  padding: 8px 12px;
+  border-bottom: 1px solid #2a2c30;
+  background: #0d0f10;
+}
+
+.dh-cross-hint {
+  font-size: 10px;
+  color: rgba(91,156,240,0.6);
+  padding: 7px 12px;
+  border-top: 1px solid #1e2022;
+  background: rgba(91,156,240,0.03);
+}
+
+/* Right panel — like real Power BI */
+.dh-right {
+  width: 240px;
+  min-width: 240px;
+  background: #111315;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.dh-panel-section {
+  padding: 10px;
+  border-bottom: 1px solid #2a2c30;
+}
+
+.dh-panel-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #9b9da4;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.dh-vis-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.dh-vis-btn {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: 1px solid #2a2c30;
+  font-size: 14px;
+  color: #6b6d74;
+  cursor: default;
+}
+
+.dh-vis-btn.active {
+  border-color: rgba(232,131,74,0.5);
+  background: rgba(232,131,74,0.1);
+  color: var(--accent);
+}
+
+.dh-col-label {
+  font-size: 9.5px;
+  color: #4a4c54;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+
+.dh-col-chips {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dh-col-chip {
+  font-size: 10.5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid;
+  cursor: default;
+}
+
+.dh-col-chip.blue { border-color: rgba(91,156,240,0.3); color: var(--blue); background: rgba(91,156,240,0.07); }
+.dh-col-chip.green { border-color: rgba(76,175,130,0.3); color: var(--green); background: rgba(76,175,130,0.07); }
+.dh-col-chip.accent { border-color: rgba(232,131,74,0.3); color: var(--accent); background: rgba(232,131,74,0.07); }
+.dh-col-chip.muted { border-color: #2a2c30; color: #6b6d74; background: transparent; }
+
+/* Data pane */
+.dh-data-pane { flex: 1; border-bottom: none; }
+
+.dh-search {
+  width: 90px;
+  background: #0d0f10;
+  border: 1px solid #2a2c30;
+  border-radius: 4px;
+  padding: 3px 7px;
+  font-size: 10px;
+  color: #6b6d74;
+  font-family: 'Outfit', sans-serif;
+  outline: none;
+}
+
+.dh-table-group { margin-bottom: 1px; }
+
+.dh-group-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: default;
+  border-radius: 5px;
+  transition: background 0.15s;
+}
+
+.dh-group-header.measure { color: #e8834a; }
+.dh-group-header.dim { color: #5b9cf0; }
+.dh-group-header.active-group { background: rgba(91,156,240,0.07); }
+
+.dh-group-icon { font-size: 12px; }
+.dh-expand { margin-left: auto; font-size: 10px; color: #4a4c54; }
+
+.dh-field-list { padding: 2px 0 4px 20px; }
+
+.dh-field {
+  font-size: 10.5px;
+  padding: 3px 6px;
+  border-radius: 3px;
+  margin-bottom: 1px;
+  color: #6b6d74;
+  cursor: default;
+}
+
+.dh-field.active { color: #e8e6e0; }
+.dh-field.measure-field.active { color: rgba(232,131,74,0.9); }
+.dh-field.dim-field.active { color: rgba(91,156,240,0.9); }
+
+.dh-relation-note {
+  margin-top: 10px;
+  font-size: 10px;
+  color: rgba(76,175,130,0.6);
+  padding: 8px 10px;
+  background: rgba(76,175,130,0.04);
+  border: 1px solid rgba(76,175,130,0.15);
+  border-radius: 6px;
+  line-height: 1.5;
+}
+
+
 .phase-link-btn {
   display: inline-flex;
   align-items: center;
@@ -1424,6 +1824,134 @@ footer {
           <span class="tag">Incremental Refresh</span>
           <span class="tag">P&amp;L · Finance View</span>
         </div>
+        <!-- ── DASHBOARD MOCKUP ── -->
+        <div class="mockup-preview-wrap" style="margin: 20px 0 20px;">
+          <div class="mockup-label-row">
+            <span class="mockup-badge" style="background:rgba(76,175,130,0.1);border-color:rgba(76,175,130,0.3);color:var(--green);">📊 ตัวอย่าง Dashboard Report — Power BI</span>
+            <span class="mockup-sub">17 หน้า · Actual vs Target · Marketing · P&amp;L</span>
+          </div>
+          <div class="db-mockup">
+            <!-- Top bar -->
+            <div class="db-topbar">
+              <div class="db-dot" style="background:#ff5f57"></div>
+              <div class="db-dot" style="background:#febc2e"></div>
+              <div class="db-dot" style="background:#28c840"></div>
+              <span class="db-title-bar">Mock Up Sales Model &nbsp;|&nbsp; Data updated 5/2/26 ▾</span>
+              <div style="margin-left:auto;display:flex;gap:8px;align-items:center;">
+                <span class="db-nav-btn">Page 1</span>
+                <span class="db-nav-btn active">Page 2</span>
+                <span class="db-nav-btn">+ 15</span>
+              </div>
+            </div>
+            <!-- Slicer + Content -->
+            <div class="db-body">
+              <!-- Left slicer -->
+              <div class="db-slicer">
+                <div class="slicer-label">Year</div>
+                <div class="slicer-chip active">■ 2026</div>
+                <div class="slicer-label" style="margin-top:14px;">MonthYear</div>
+                <div class="slicer-chip active">■ Jan 2026</div>
+                <div class="slicer-chip">□ Feb 2026</div>
+                <div class="slicer-chip">□ Mar 2026</div>
+                <div class="slicer-chip">□ Apr 2026</div>
+                <div class="slicer-chip">□ May 2026</div>
+                <div class="slicer-chip muted">□ Jun 2026</div>
+                <div class="slicer-chip muted">□ Jul 2026</div>
+              </div>
+              <!-- Main content -->
+              <div class="db-main">
+                <!-- KPI row -->
+                <div class="db-kpi-row">
+                  <div class="db-kpi">
+                    <div class="kpi-label">Net Sales (All)</div>
+                    <div class="kpi-val green">1,114,634</div>
+                    <div class="kpi-sub">vs Target ▲ 112%</div>
+                  </div>
+                  <div class="db-kpi">
+                    <div class="kpi-label">Net Sales (New)</div>
+                    <div class="kpi-val green">1,114,634</div>
+                    <div class="kpi-sub">Jan 2026 only</div>
+                  </div>
+                  <div class="db-kpi">
+                    <div class="kpi-label">Closed (New)</div>
+                    <div class="kpi-val accent">25</div>
+                    <div class="kpi-sub">Deals closed</div>
+                  </div>
+                  <div class="db-kpi">
+                    <div class="kpi-label">Closed (All)</div>
+                    <div class="kpi-val accent">25</div>
+                    <div class="kpi-sub">Total orders</div>
+                  </div>
+                </div>
+
+                <!-- Summary table -->
+                <div class="db-table-wrap">
+                  <div class="db-table-title">📅 Monthly Summary</div>
+                  <table class="db-table">
+                    <thead>
+                      <tr>
+                        <th>MonthYear</th><th>net_sales_all</th><th>net_sales_con</th><th>net_sales_new</th><th>closed_con</th><th>closed_new</th><th>closed_all</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="highlight-row">
+                        <td>Jan 2026</td><td class="num green">1,114,634</td><td class="num">—</td><td class="num green">1,114,634</td><td class="num">—</td><td class="num accent">25</td><td class="num accent">25</td>
+                      </tr>
+                      <tr class="total-row">
+                        <td><strong>Total</strong></td><td class="num green"><strong>1,114,634</strong></td><td class="num">—</td><td class="num green"><strong>1,114,634</strong></td><td class="num">—</td><td class="num accent"><strong>25</strong></td><td class="num accent"><strong>25</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Marketing channel table -->
+                <div class="db-table-wrap" style="margin-top:14px;">
+                  <div class="db-table-title">📣 Marketing Channel Breakdown</div>
+                  <table class="db-table">
+                    <thead>
+                      <tr>
+                        <th>marketing_channel</th><th>ads_spent</th><th>impression</th><th>click</th><th>reach</th><th>closed_new</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span class="ch-badge fb">Facebook Ads</span></td>
+                        <td class="num">402,372</td><td class="num">8,387,989</td><td class="num blue">403,315</td><td class="num">98,358</td><td class="num green">17</td>
+                      </tr>
+                      <tr>
+                        <td><span class="ch-badge line">Line Ads</span></td>
+                        <td class="num">74,091</td><td class="num">4,350,674</td><td class="num blue">2,890</td><td class="num">2,551,459</td><td class="num green">5</td>
+                      </tr>
+                      <tr>
+                        <td><span class="ch-badge organic">Organic</span></td>
+                        <td class="num muted">—</td><td class="num muted">—</td><td class="num muted">—</td><td class="num muted">—</td><td class="num green">1</td>
+                      </tr>
+                      <tr>
+                        <td><span class="ch-badge other">Other</span></td>
+                        <td class="num muted">—</td><td class="num muted">—</td><td class="num muted">—</td><td class="num muted">—</td><td class="num green">2</td>
+                      </tr>
+                      <tr class="total-row">
+                        <td><strong>Total</strong></td>
+                        <td class="num"><strong>476,463</strong></td><td class="num"><strong>8,387,989</strong></td><td class="num blue"><strong>101,248</strong></td><td class="num"><strong>6,001,596</strong></td><td class="num green"><strong>25</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Page tabs -->
+                <div class="db-page-tabs">
+                  <span class="db-page-tab">Overview</span>
+                  <span class="db-page-tab active">Marketing</span>
+                  <span class="db-page-tab">Lead Funnel</span>
+                  <span class="db-page-tab">Leaderboard</span>
+                  <span class="db-page-tab">P&amp;L</span>
+                  <span class="db-page-tab">Time Intel</span>
+                  <span class="db-page-tab muted">+11</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <a href="https://docs.google.com/document/d/1ns8DLOobMHk4ebx8Ec1edGaBJZAx7W1WI2LzBF1VAzU/edit?usp=sharing" target="_blank" class="phase-link-btn">
           📄 ดูรายละเอียด Dashboard ทั้งหมด →
         </a>
@@ -1447,6 +1975,206 @@ footer {
           <span class="tag accent">ลด Dependency</span>
           <span class="tag">Power BI Semantic Model</span>
           <span class="tag">Data Dictionary</span>
+        </div>
+        <!-- ── DATA HUB MOCKUP ── -->
+        <div class="mockup-preview-wrap" style="margin: 20px 0 20px;">
+          <div class="mockup-label-row">
+            <span class="mockup-badge" style="background:rgba(91,156,240,0.1);border-color:rgba(91,156,240,0.3);color:var(--blue);">🔗 ตัวอย่าง Data Hub — Self-Service Power BI</span>
+            <span class="mockup-sub">ลากข้อมูลเองได้ · Cross-filter ทุก Dimension · ไม่ต้องรอทีม Data</span>
+          </div>
+          <div class="dh-mockup">
+            <!-- Top bar -->
+            <div class="db-topbar">
+              <div class="db-dot" style="background:#ff5f57"></div>
+              <div class="db-dot" style="background:#febc2e"></div>
+              <div class="db-dot" style="background:#28c840"></div>
+              <span class="db-title-bar">Data Hub — Sales Model &nbsp;|&nbsp; Semantic Model Connected ✓</span>
+              <div style="margin-left:auto;display:flex;gap:8px;align-items:center;">
+                <span class="db-nav-btn active">Build visual</span>
+                <span class="db-nav-btn">Open semantic model</span>
+              </div>
+            </div>
+            <!-- 3-column layout like real Power BI -->
+            <div class="dh-body">
+              <!-- Canvas area -->
+              <div class="dh-canvas">
+                <div class="dh-canvas-label">📐 Canvas — ลาก Field มาวางตรงนี้</div>
+                <!-- Mock visual already built -->
+                <div class="dh-visual-built">
+                  <div class="dh-visual-title">📊 ยอดขาย × ช่องทาง × เดือน (Cross-filter)</div>
+                  <table class="dh-table">
+                    <thead>
+                      <tr>
+                        <th>marketing_channel</th>
+                        <th>net_sales_all</th>
+                        <th>net_sales_new</th>
+                        <th>closed_new</th>
+                        <th>%closed_new</th>
+                        <th>ads_spent</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span class="ch-badge fb">Facebook Ads</span></td>
+                        <td class="num green">638,244</td>
+                        <td class="num green">638,244</td>
+                        <td class="num accent">17</td>
+                        <td class="num">68%</td>
+                        <td class="num">402,372</td>
+                      </tr>
+                      <tr>
+                        <td><span class="ch-badge line">Line Ads</span></td>
+                        <td class="num green">276,390</td>
+                        <td class="num green">276,390</td>
+                        <td class="num accent">5</td>
+                        <td class="num">20%</td>
+                        <td class="num">74,091</td>
+                      </tr>
+                      <tr>
+                        <td><span class="ch-badge organic">Organic</span></td>
+                        <td class="num green">100,000</td>
+                        <td class="num green">100,000</td>
+                        <td class="num accent">1</td>
+                        <td class="num">4%</td>
+                        <td class="num muted">—</td>
+                      </tr>
+                      <tr>
+                        <td><span class="ch-badge other">Other</span></td>
+                        <td class="num green">100,000</td>
+                        <td class="num green">100,000</td>
+                        <td class="num accent">2</td>
+                        <td class="num">8%</td>
+                        <td class="num muted">—</td>
+                      </tr>
+                      <tr class="total-row">
+                        <td><strong>Total</strong></td>
+                        <td class="num green"><strong>1,114,634</strong></td>
+                        <td class="num green"><strong>1,114,634</strong></td>
+                        <td class="num accent"><strong>25</strong></td>
+                        <td class="num"><strong>100%</strong></td>
+                        <td class="num"><strong>476,463</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="dh-cross-hint">✦ Cross-filter ได้ทุก Dimension — กด cell ใดก็ filter visual ทั้งหน้าอัตโนมัติ</div>
+                </div>
+              </div>
+
+              <!-- Right panel: Visualizations + Data pane (like Power BI) -->
+              <div class="dh-right">
+                <!-- Vis picker (top right) -->
+                <div class="dh-panel-section">
+                  <div class="dh-panel-title">Visualizations</div>
+                  <div class="dh-vis-grid">
+                    <div class="dh-vis-btn active" title="Table">⊞</div>
+                    <div class="dh-vis-btn" title="Bar chart">▊</div>
+                    <div class="dh-vis-btn" title="Line chart">〜</div>
+                    <div class="dh-vis-btn" title="Donut">◎</div>
+                    <div class="dh-vis-btn" title="Card">▣</div>
+                    <div class="dh-vis-btn" title="Matrix">⊟</div>
+                    <div class="dh-vis-btn" title="Map">⊕</div>
+                    <div class="dh-vis-btn" title="Waterfall">⧖</div>
+                  </div>
+                  <div class="dh-col-label">Columns (dragged fields)</div>
+                  <div class="dh-col-chips">
+                    <div class="dh-col-chip blue">marketing_channel ×</div>
+                    <div class="dh-col-chip green">net_sales_all ×</div>
+                    <div class="dh-col-chip green">net_sales_new ×</div>
+                    <div class="dh-col-chip accent">closed_new ×</div>
+                    <div class="dh-col-chip muted">%closed_new ×</div>
+                    <div class="dh-col-chip muted">ads_spent ×</div>
+                  </div>
+                </div>
+
+                <!-- Data pane — the key differentiator -->
+                <div class="dh-panel-section dh-data-pane">
+                  <div class="dh-panel-title" style="display:flex;align-items:center;justify-content:space-between;">
+                    <span>Data</span>
+                    <input class="dh-search" type="text" placeholder="🔍 Search fields..." readonly/>
+                  </div>
+
+                  <!-- Measure table -->
+                  <div class="dh-table-group">
+                    <div class="dh-group-header measure">
+                      <span class="dh-group-icon">⚡</span> Marketing Measure
+                      <span class="dh-expand">▾</span>
+                    </div>
+                    <div class="dh-field-list">
+                      <div class="dh-field measure-field active">☑ ads_spent</div>
+                      <div class="dh-field measure-field active">☑ click</div>
+                      <div class="dh-field measure-field active">☑ impression</div>
+                      <div class="dh-field measure-field">☐ %mc</div>
+                      <div class="dh-field measure-field active">☑ reach</div>
+                    </div>
+                  </div>
+
+                  <div class="dh-table-group">
+                    <div class="dh-group-header measure">
+                      <span class="dh-group-icon">⚡</span> Order Measure
+                      <span class="dh-expand">▾</span>
+                    </div>
+                    <div class="dh-field-list">
+                      <div class="dh-field measure-field">☐ closed_all</div>
+                      <div class="dh-field measure-field">☐ %closed_all</div>
+                      <div class="dh-field measure-field">☐ closed_con</div>
+                      <div class="dh-field measure-field active">☑ closed_new</div>
+                      <div class="dh-field measure-field">☐ %closed_qualify</div>
+                      <div class="dh-field measure-field">☐ %closed_serious</div>
+                      <div class="dh-field measure-field active">☑ net_sales_all</div>
+                      <div class="dh-field measure-field">☐ net_sales_con</div>
+                      <div class="dh-field measure-field active">☑ net_sales_new</div>
+                    </div>
+                  </div>
+
+                  <!-- Dim tables -->
+                  <div class="dh-table-group">
+                    <div class="dh-group-header dim">
+                      <span class="dh-group-icon">📅</span> Dim Calendar
+                      <span class="dh-expand">▸</span>
+                    </div>
+                  </div>
+                  <div class="dh-table-group">
+                    <div class="dh-group-header dim active-group">
+                      <span class="dh-group-icon">📣</span> Dim Marketing Channel
+                      <span class="dh-expand">▾</span>
+                    </div>
+                    <div class="dh-field-list">
+                      <div class="dh-field dim-field active">☑ marketing_channel</div>
+                    </div>
+                  </div>
+                  <div class="dh-table-group">
+                    <div class="dh-group-header dim">
+                      <span class="dh-group-icon">🧑‍💼</span> Dim Sale Person
+                      <span class="dh-expand">▸</span>
+                    </div>
+                  </div>
+                  <div class="dh-table-group">
+                    <div class="dh-group-header dim">
+                      <span class="dh-group-icon">📦</span> Dim Order
+                      <span class="dh-expand">▸</span>
+                    </div>
+                  </div>
+                  <div class="dh-table-group">
+                    <div class="dh-group-header dim">
+                      <span class="dh-group-icon">🏢</span> Dim BU
+                      <span class="dh-expand">▸</span>
+                    </div>
+                  </div>
+                  <div class="dh-table-group">
+                    <div class="dh-group-header dim">
+                      <span class="dh-group-icon">👤</span> Dim Lead
+                      <span class="dh-expand">▸</span>
+                    </div>
+                  </div>
+
+                  <div class="dh-relation-note">
+                    🔗 ทุก Dimension มี Relation กับ Fact Table แล้ว<br>
+                    Cross-filter ได้อิสระ — ไม่ต้อง join เอง
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <a href="https://drive.google.com/file/d/1JtRiSPLYuJ-aYKcPb0LmuPwUN6cO_Vye/view?usp=sharing" target="_blank" class="phase-link-btn phase-link-btn-video">
           ▶ ดูวิดีโอตัวอย่างการใช้งาน Data Hub →
