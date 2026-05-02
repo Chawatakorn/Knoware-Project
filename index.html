@@ -903,7 +903,16 @@ footer {
 
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ─── MOCKUP PREVIEWS ─── */
+/* ─── HERO PYRAMID ─── */
+.hero-pyramid-svg {
+  width: 100%;
+  max-width: 400px;
+  animation: fadeUp 0.9s 0.4s ease both;
+  opacity: 0;
+  filter: drop-shadow(0 0 40px rgba(124,108,240,0.08));
+}
+
+
 .mockup-preview-wrap {
   border-radius: 12px;
   overflow: hidden;
@@ -1450,12 +1459,130 @@ footer {
 
 .vision-diagram {
   width: 100%;
-  max-width: 960px;
+  max-width: 100%;
+}
+
+/* ── vision 2-col split ── */
+.vision-split {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 40px;
+  align-items: start;
+}
+
+.vision-split-left {
+  min-width: 0;
+}
+
+.vision-split-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: sticky;
+  top: 80px;
+}
+
+.vsr-label {
+  width: 100%;
+  text-align: center;
+}
+
+.vsr-tag {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.vsr-tag.ai {
+  background: rgba(124,108,240,0.10);
+  border: 1px solid rgba(124,108,240,0.28);
+  color: #a09af5;
+}
+
+.vsr-tag.found {
+  background: rgba(76,175,130,0.08);
+  border: 1px solid rgba(76,175,130,0.25);
+  color: #6dcba0;
+}
+
+.vp-svg {
+  width: 100%;
+  max-width: 380px;
+  filter: drop-shadow(0 0 48px rgba(124,108,240,0.14))
+          drop-shadow(0 0 24px rgba(76,175,130,0.08));
+}
+
+@media (max-width: 900px) {
+  .vision-split { grid-template-columns: 1fr; }
+  .vision-split-right { position: static; }
 }
 
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+/* ─── VISION PYRAMID SECTION ─── */
+.vision-pyramid-wrap {
+  margin-top: 64px;
+  padding-top: 48px;
+  border-top: 1px solid var(--border);
+}
+.vision-pyramid-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 40px;
+  justify-content: center;
+}
+.vpl-line { flex: 1; max-width: 120px; height: 1px; background: linear-gradient(90deg, transparent, var(--border2)); }
+.vpl-line:last-child { background: linear-gradient(90deg, var(--border2), transparent); }
+.vpl-text { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+
+.vision-pyramid-row {
+  display: grid;
+  grid-template-columns: 220px 1fr 220px;
+  gap: 32px;
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .vision-pyramid-row { grid-template-columns: 1fr; }
+  .vp-legend, .vp-principles { display: none; }
+}
+
+.vp-legend { padding-top: 24px; }
+.vp-legend-group { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+.vp-legend-dot { width: 10px; height: 10px; border-radius: 50%; margin-top: 4px; flex-shrink: 0; }
+.vp-legend-dot.ai   { background: #7c6cf0; box-shadow: 0 0 8px rgba(124,108,240,0.6); }
+.vp-legend-dot.found { background: #4caf82; box-shadow: 0 0 8px rgba(76,175,130,0.6); }
+.vp-legend-title { font-size: 11.5px; font-weight: 600; }
+.vp-legend-title.ai    { color: #a09af5; }
+.vp-legend-title.found { color: #6dcba0; }
+.vp-legend-sub { font-size: 10px; color: var(--muted); line-height: 1.5; margin-top: 2px; }
+.vp-legend-items { margin: 8px 0 14px 20px; display: flex; flex-direction: column; gap: 6px; }
+.vp-legend-item { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted2); }
+.vp-phase-num { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; letter-spacing: 0.05em; flex-shrink: 0; }
+.vp-phase-num.ai   { background: rgba(124,108,240,0.15); color: #a09af5; border: 1px solid rgba(124,108,240,0.3); }
+.vp-phase-num.found { background: rgba(76,175,130,0.12); color: #6dcba0; border: 1px solid rgba(76,175,130,0.3); }
+.vp-divider-row { display: flex; align-items: center; gap: 10px; margin: 14px 0; }
+.vp-divider-line { flex: 1; height: 1px; background: var(--border); }
+.vp-divider-label { font-size: 9.5px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; white-space: nowrap; }
+
+.vp-center { display: flex; justify-content: center; }
+.vp-svg { width: 100%; max-width: 380px; filter: drop-shadow(0 0 50px rgba(124,108,240,0.12)) drop-shadow(0 0 20px rgba(76,175,130,0.07)); }
+
+.vp-principles { padding-top: 24px; }
+.vp-principle-title { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.vp-principle { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: 8px; margin-bottom: 8px; border: 1px solid transparent; }
+.vp-principle.ai   { background: rgba(124,108,240,0.05); border-color: rgba(124,108,240,0.15); }
+.vp-principle.found { background: rgba(76,175,130,0.04); border-color: rgba(76,175,130,0.12); }
+.vpp-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+.vpp-label { font-size: 11.5px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+.vpp-desc { font-size: 10.5px; color: var(--muted); line-height: 1.5; }
 </style>
 </head>
 <body>
@@ -1511,6 +1638,8 @@ footer {
   </div>
 </div>
 
+</div>
+
 <!-- ─── PROBLEMS ─── -->
 <section id="problems">
   <p class="section-label reveal">01 — ทำไมต้องทำตอนนี้</p>
@@ -1545,7 +1674,12 @@ footer {
   <p class="vision-label reveal">02 — ภาพรวม Project</p>
   <h2 class="vision-h2 reveal">จากข้อมูลกระจัดกระจาย<br><em>สู่ AI ที่สร้าง Insight ให้เลยโดยอัตโนมัติ</em></h2>
 
-  <svg class="vision-diagram reveal" viewBox="0 0 960 860" xmlns="http://www.w3.org/2000/svg" font-family="Outfit, sans-serif">
+  <!-- ── 2-column: Flow diagram left | Pyramid right ── -->
+  <div class="vision-split reveal">
+
+    <!-- LEFT: original flow diagram -->
+    <div class="vision-split-left">
+      <svg class="vision-diagram" viewBox="0 0 960 860" xmlns="http://www.w3.org/2000/svg" font-family="Outfit, sans-serif">
     <defs>
       <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#6b6d74"/></marker>
       <marker id="arr-grn" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4caf82"/></marker>
@@ -1719,6 +1853,163 @@ footer {
     <text x="797" y="315" text-anchor="middle" fill="#7c6cf0" font-size="10" letter-spacing="1.5" font-weight="600">▲ Phase 4–5 · AI Layer</text>
 
   </svg>
+    </div><!-- end vision-split-left -->
+
+    <!-- RIGHT: Pyramid -->
+    <div class="vision-split-right">
+      <div class="vsr-label">
+        <span class="vsr-tag ai">PHASE 4–6 · AI LAYER</span>
+      </div>
+
+      <svg class="vp-svg" viewBox="0 0 520 610" xmlns="http://www.w3.org/2000/svg" font-family="Outfit, sans-serif">
+        <defs>
+          <filter id="vp-glow-brain"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="vp-glow-ai"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="vp-glow-found"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <linearGradient id="vp-brain" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#c8c0ff"/>
+            <stop offset="100%" stop-color="#7c6cf0"/>
+          </linearGradient>
+          <linearGradient id="vp-ai5" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="rgba(148,132,240,0.85)"/>
+            <stop offset="100%" stop-color="rgba(108,92,210,0.85)"/>
+          </linearGradient>
+          <linearGradient id="vp-ai4" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="rgba(124,108,240,0.62)"/>
+            <stop offset="100%" stop-color="rgba(91,130,240,0.62)"/>
+          </linearGradient>
+          <linearGradient id="vp-f3" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="rgba(76,175,130,0.75)"/>
+            <stop offset="100%" stop-color="rgba(48,148,104,0.75)"/>
+          </linearGradient>
+          <linearGradient id="vp-f2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="rgba(76,175,130,0.52)"/>
+            <stop offset="100%" stop-color="rgba(48,148,104,0.52)"/>
+          </linearGradient>
+          <linearGradient id="vp-f1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="rgba(76,175,130,0.30)"/>
+            <stop offset="100%" stop-color="rgba(48,148,104,0.30)"/>
+          </linearGradient>
+        </defs>
+
+        <!-- pyramid body is centered in viewBox: offset = 80px left/right padding for labels -->
+        <!-- pyramid center = 260, pyramid half-width at base = 180 → pyramid spans x: 80–440 -->
+
+        <!-- ══ APEX: The Brain ══ -->
+        <polygon points="260,8 204,82 316,82"
+          fill="url(#vp-brain)" stroke="#c0b8ff" stroke-width="1.5"
+          filter="url(#vp-glow-brain)"/>
+        <polygon points="260,16 212,76 308,76"
+          fill="none" stroke="rgba(220,215,255,0.20)" stroke-width="1"/>
+        <text x="260" y="52" text-anchor="middle" font-size="24">🧠</text>
+        <text x="260" y="70" text-anchor="middle" fill="#fff" font-size="8" font-weight="700" letter-spacing="2">THE BRAIN</text>
+
+        <!-- Phase 6 label — right -->
+        <text x="326" y="36" fill="#c0baf8" font-size="10.5" font-weight="600">Phase 6</text>
+        <text x="326" y="50" fill="#6b6d74" font-size="9.5">AI Chatbot</text>
+        <line x1="317" y1="43" x2="324" y2="43" stroke="rgba(192,186,248,0.5)" stroke-width="1"/>
+
+        <!-- ══ TIER 2: AI Insight Engine ══ -->
+        <polygon points="204,86 156,160 364,160 316,86"
+          fill="url(#vp-ai5)" stroke="rgba(148,132,240,0.6)" stroke-width="1.2"
+          filter="url(#vp-glow-ai)"/>
+        <text x="260" y="116" text-anchor="middle" fill="#e0dcff" font-size="11" font-weight="600">AI Insight Engine</text>
+        <text x="260" y="132" text-anchor="middle" fill="rgba(220,216,255,0.70)" font-size="9">Weekly Analysis · Top 5 Issues</text>
+        <text x="260" y="152" text-anchor="middle" fill="rgba(200,192,255,0.80)" font-size="7.5" letter-spacing="2" font-weight="600">PHASE 5</text>
+
+        <!-- Phase 5 label — left -->
+        <text x="146" y="116" text-anchor="end" fill="#a09af5" font-size="10.5" font-weight="600">Phase 5</text>
+        <text x="146" y="130" text-anchor="end" fill="#6b6d74" font-size="9.5">Insight Agent</text>
+        <line x1="148" y1="123" x2="155" y2="123" stroke="rgba(160,154,245,0.5)" stroke-width="1"/>
+
+        <!-- ══ TIER 3: Business Advisor ══ -->
+        <polygon points="156,164 112,238 408,238 364,164"
+          fill="url(#vp-ai4)" stroke="rgba(124,108,240,0.45)" stroke-width="1.2"/>
+        <text x="260" y="194" text-anchor="middle" fill="#d4d0ff" font-size="11" font-weight="600">AI Business Advisor</text>
+        <text x="260" y="210" text-anchor="middle" fill="rgba(208,204,255,0.70)" font-size="9">Data Q&amp;A · Logic Explainer</text>
+        <text x="260" y="230" text-anchor="middle" fill="rgba(180,172,255,0.80)" font-size="7.5" letter-spacing="2" font-weight="600">PHASE 4</text>
+
+        <!-- Phase 4 label — right -->
+        <text x="418" y="194" fill="#a09af5" font-size="10.5" font-weight="600">Phase 4</text>
+        <text x="418" y="208" fill="#6b6d74" font-size="9.5">24/7 Chatbot</text>
+        <line x1="409" y1="201" x2="416" y2="201" stroke="rgba(160,154,245,0.5)" stroke-width="1"/>
+
+        <!-- ── DIVIDER AI / Foundation ── -->
+        <line x1="90" y1="250" x2="430" y2="250" stroke="#2e3035" stroke-width="1.2" stroke-dasharray="5,4"/>
+        <polygon points="260,246 255,253 265,253" fill="#3a3c44"/>
+
+        <!-- Foundation label row -->
+        <text x="260" y="265" text-anchor="middle" fill="rgba(76,175,130,0.65)" font-size="8" letter-spacing="2.5" font-weight="600">PHASE 1–3 · DATA FOUNDATION</text>
+        <line x1="90"  y1="259" x2="160" y2="259" stroke="rgba(76,175,130,0.2)" stroke-width="1"/>
+        <line x1="360" y1="259" x2="430" y2="259" stroke="rgba(76,175,130,0.2)" stroke-width="1"/>
+
+        <!-- ══ TIER 4: Data Hub ══ -->
+        <polygon points="112,270 86,344 434,344 408,270"
+          fill="url(#vp-f3)" stroke="rgba(76,175,130,0.55)" stroke-width="1.2"
+          filter="url(#vp-glow-found)"/>
+        <text x="260" y="300" text-anchor="middle" fill="#d0f5e8" font-size="11" font-weight="600">Data Hub</text>
+        <text x="260" y="316" text-anchor="middle" fill="rgba(200,245,228,0.70)" font-size="9">Self-Service Analytics · Drag &amp; Drop</text>
+        <text x="260" y="336" text-anchor="middle" fill="rgba(76,200,148,0.90)" font-size="7.5" letter-spacing="2" font-weight="600">PHASE 3</text>
+
+        <!-- Phase 3 label — left -->
+        <text x="76" y="300" text-anchor="end" fill="#6dcba0" font-size="10.5" font-weight="600">Phase 3</text>
+        <text x="76" y="314" text-anchor="end" fill="#6b6d74" font-size="9.5">Data Hub</text>
+        <line x1="78" y1="307" x2="85" y2="307" stroke="rgba(109,203,160,0.5)" stroke-width="1"/>
+
+        <!-- ══ TIER 5: Dashboard ══ -->
+        <polygon points="86,348 80,422 440,422 434,348"
+          fill="url(#vp-f2)" stroke="rgba(76,175,130,0.38)" stroke-width="1.2"/>
+        <text x="260" y="378" text-anchor="middle" fill="#b8f0d4" font-size="11" font-weight="600">Dashboard Report</text>
+        <text x="260" y="394" text-anchor="middle" fill="rgba(184,240,212,0.70)" font-size="9">17 Pages · Power BI · Time Intelligence</text>
+        <text x="260" y="414" text-anchor="middle" fill="rgba(76,175,130,0.85)" font-size="7.5" letter-spacing="2" font-weight="600">PHASE 2</text>
+
+        <!-- Phase 2 label — right -->
+        <text x="450" y="378" fill="#6dcba0" font-size="10.5" font-weight="600">Phase 2</text>
+        <text x="450" y="392" fill="#6b6d74" font-size="9.5">Dashboard</text>
+        <line x1="441" y1="385" x2="448" y2="385" stroke="rgba(109,203,160,0.5)" stroke-width="1"/>
+
+        <!-- ══ TIER 6: Data Model (base) ══ -->
+        <polygon points="80,426 80,500 440,500 440,426"
+          fill="url(#vp-f1)" stroke="rgba(76,175,130,0.25)" stroke-width="1.2"/>
+        <polygon points="84,430 84,494 436,494 436,430"
+          fill="none" stroke="rgba(76,175,130,0.08)" stroke-width="1"/>
+        <text x="260" y="456" text-anchor="middle" fill="#a0e4c0" font-size="12" font-weight="700">Data Model ใน Database</text>
+        <text x="260" y="472" text-anchor="middle" fill="rgba(160,228,192,0.65)" font-size="9">Star Schema · Supabase · Business Logic</text>
+        <text x="260" y="492" text-anchor="middle" fill="rgba(76,175,130,0.85)" font-size="7.5" letter-spacing="2" font-weight="600">PHASE 1 · FOUNDATION</text>
+
+        <!-- Phase 1 label — left -->
+        <text x="70" y="456" text-anchor="end" fill="#6dcba0" font-size="10.5" font-weight="600">Phase 1</text>
+        <text x="70" y="470" text-anchor="end" fill="#6b6d74" font-size="9.5">Data Model</text>
+        <line x1="72" y1="463" x2="79" y2="463" stroke="rgba(109,203,160,0.5)" stroke-width="1"/>
+
+        <!-- ── BASE platform ── -->
+        <rect x="80" y="505" width="360" height="10" rx="2" fill="rgba(76,175,130,0.22)" stroke="rgba(76,175,130,0.40)" stroke-width="1"/>
+        <rect x="80" y="517" width="360" height="6" rx="1" fill="rgba(76,175,130,0.10)"/>
+        <text x="260" y="540" text-anchor="middle" fill="rgba(76,175,130,0.55)" font-size="8" letter-spacing="2.5" font-weight="600">SUPABASE · SINGLE SOURCE OF TRUTH</text>
+
+        <!-- ── LEFT bracket: Foundation ── -->
+        <line x1="84" y1="272" x2="84" y2="498" stroke="rgba(76,175,130,0.28)" stroke-width="1.5"/>
+        <line x1="84" y1="272" x2="92" y2="272" stroke="rgba(76,175,130,0.28)" stroke-width="1.5"/>
+        <line x1="84" y1="498" x2="92" y2="498" stroke="rgba(76,175,130,0.28)" stroke-width="1.5"/>
+        <text x="82" y="388" text-anchor="middle" fill="rgba(76,175,130,0.40)" font-size="7" font-weight="700" letter-spacing="2" transform="rotate(-90,82,388)">FOUNDATION</text>
+
+        <!-- ── RIGHT bracket: AI Layer ── -->
+        <line x1="436" y1="10" x2="436" y2="244" stroke="rgba(124,108,240,0.28)" stroke-width="1.5"/>
+        <line x1="436" y1="10"  x2="428" y2="10"  stroke="rgba(124,108,240,0.28)" stroke-width="1.5"/>
+        <line x1="436" y1="244" x2="428" y2="244" stroke="rgba(124,108,240,0.28)" stroke-width="1.5"/>
+        <text x="438" y="130" text-anchor="middle" fill="rgba(124,108,240,0.40)" font-size="7" font-weight="700" letter-spacing="2" transform="rotate(90,438,130)">AI LAYER</text>
+
+        <!-- bottom caption -->
+        <text x="260" y="578" text-anchor="middle" fill="#3a3c44" font-size="9" letter-spacing="1.5">── Data Intelligence Plan · 6 Phases ──</text>
+      </svg>
+
+      <div class="vsr-label" style="margin-top:2px;">
+        <span class="vsr-tag found">PHASE 1–3 · DATA FOUNDATION</span>
+      </div>
+    </div><!-- end vision-split-right -->
+
+  </div><!-- end vision-split -->
+
 </section>
 
 <!-- ─── ROADMAP ─── -->
