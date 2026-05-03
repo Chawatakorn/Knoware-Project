@@ -559,10 +559,13 @@ h2 em { font-style: italic; color: var(--muted2); }
 
 .phase-num {
   font-family: 'Instrument Serif', serif;
-  font-size: 48px;
+  font-size: 56px;
   line-height: 1;
-  color: var(--border2);
+  color: var(--muted2);
   margin-bottom: 20px;
+  text-shadow: 0 0 30px rgba(232,131,74,0.18);
+  font-weight: 400;
+  letter-spacing: -0.02em;
 }
 
 .phase-tag {
@@ -1461,6 +1464,103 @@ footer {
   border-color: rgba(91,156,240,0.6);
 }
 
+/* ─── DATA HUB ACTION BUTTONS ─── */
+.dh-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 22px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.22s ease;
+  flex: 1;
+  min-width: 200px;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.dh-action-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.22s;
+  border-radius: 11px;
+}
+
+.dh-action-btn:hover { transform: translateY(-2px); }
+.dh-action-btn:hover::before { opacity: 1; }
+.dh-action-btn:active { transform: translateY(0); }
+
+.dh-btn-video {
+  border: 1.5px solid rgba(91,156,240,0.5);
+  color: var(--blue);
+  background: rgba(91,156,240,0.07);
+  box-shadow: 0 2px 12px rgba(91,156,240,0.10);
+}
+.dh-btn-video::before { background: rgba(91,156,240,0.10); }
+.dh-btn-video:hover { border-color: rgba(91,156,240,0.8); box-shadow: 0 6px 24px rgba(91,156,240,0.22); }
+
+.dh-btn-download {
+  border: 1.5px solid rgba(76,175,130,0.5);
+  color: var(--green);
+  background: rgba(76,175,130,0.07);
+  box-shadow: 0 2px 12px rgba(76,175,130,0.10);
+}
+.dh-btn-download::before { background: rgba(76,175,130,0.10); }
+.dh-btn-download:hover { border-color: rgba(76,175,130,0.8); box-shadow: 0 6px 24px rgba(76,175,130,0.22); }
+
+.dh-btn-dict {
+  border: 1.5px solid rgba(200,168,75,0.5);
+  color: var(--gold);
+  background: rgba(200,168,75,0.07);
+  box-shadow: 0 2px 12px rgba(200,168,75,0.10);
+}
+.dh-btn-dict::before { background: rgba(200,168,75,0.10); }
+.dh-btn-dict:hover { border-color: rgba(200,168,75,0.8); box-shadow: 0 6px 24px rgba(200,168,75,0.22); }
+
+.dh-btn-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  position: relative; z-index: 1;
+}
+
+.dh-btn-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  position: relative; z-index: 1;
+}
+
+.dh-btn-title {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.dh-btn-sub {
+  font-size: 11.5px;
+  opacity: 0.65;
+  letter-spacing: 0.02em;
+}
+
+.dh-btn-arrow {
+  font-size: 18px;
+  opacity: 0.6;
+  transition: transform 0.2s, opacity 0.2s;
+  flex-shrink: 0;
+  position: relative; z-index: 1;
+}
+
+.dh-action-btn:hover .dh-btn-arrow {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
 /* ─── NAV TOC ─── */
 .nav-toc-wrap {
   position: relative;
@@ -2192,7 +2292,7 @@ footer {
     <!-- Phase 2 -->
     <div class="phase-item reveal" id="phase2">
       <div class="phase-left" style="background: rgba(76,175,130,0.04); border-right-color: rgba(76,175,130,0.15);">
-        <div class="phase-num" style="color: rgba(76,175,130,0.25);">02</div>
+        <div class="phase-num" style="color: rgba(76,175,130,0.70); text-shadow: 0 0 24px rgba(76,175,130,0.25);">02</div>
         <div><div class="phase-tag" style="color: var(--green);">Reporting Layer</div></div>
       </div>
       <div class="phase-right">
@@ -2272,209 +2372,44 @@ footer {
           <span class="tag">Power BI Semantic Model</span>
           <span class="tag">Data Dictionary</span>
         </div>
-        <!-- ── DATA HUB MOCKUP ── -->
-        <div class="mockup-preview-wrap" style="margin: 20px 0 20px;">
+        <!-- ── DATA HUB SCREENSHOT ── -->
+        <div class="mockup-preview-wrap" style="margin: 20px 0 24px;">
           <div class="mockup-label-row">
-            <span class="mockup-badge" style="background:rgba(91,156,240,0.1);border-color:rgba(91,156,240,0.3);color:var(--blue);">🔗 ตัวอย่าง Data Hub — Self-Service Power BI</span>
+            <span class="mockup-badge" style="background:rgba(91,156,240,0.1);border-color:rgba(91,156,240,0.3);color:var(--blue);">🔗 ตัวอย่างจริงจาก Data Hub — Power BI</span>
             <span class="mockup-sub">ลากข้อมูลเองได้ · Cross-filter ทุก Dimension · ไม่ต้องรอทีม Data</span>
           </div>
-          <div class="dh-mockup">
-            <!-- Top bar -->
-            <div class="db-topbar">
-              <div class="db-dot" style="background:#ff5f57"></div>
-              <div class="db-dot" style="background:#febc2e"></div>
-              <div class="db-dot" style="background:#28c840"></div>
-              <span class="db-title-bar">Data Hub — Sales Model &nbsp;|&nbsp; Semantic Model Connected ✓</span>
-              <div style="margin-left:auto;display:flex;gap:8px;align-items:center;">
-                <span class="db-nav-btn active">Build visual</span>
-                <span class="db-nav-btn">Open semantic model</span>
-              </div>
-            </div>
-            <!-- 3-column layout like real Power BI -->
-            <div class="dh-body">
-              <!-- Canvas area -->
-              <div class="dh-canvas">
-                <div class="dh-canvas-label">📐 Canvas — ลาก Field มาวางตรงนี้</div>
-                <!-- Mock visual already built -->
-                <div class="dh-visual-built">
-                  <div class="dh-visual-title">📊 ยอดขาย × ช่องทาง × เดือน (Cross-filter)</div>
-                  <table class="dh-table">
-                    <thead>
-                      <tr>
-                        <th>marketing_channel</th>
-                        <th>net_sales_all</th>
-                        <th>net_sales_new</th>
-                        <th>closed_new</th>
-                        <th>%closed_new</th>
-                        <th>ads_spent</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td><span class="ch-badge fb">Facebook Ads</span></td>
-                        <td class="num green">638,244</td>
-                        <td class="num green">638,244</td>
-                        <td class="num accent">17</td>
-                        <td class="num">68%</td>
-                        <td class="num">402,372</td>
-                      </tr>
-                      <tr>
-                        <td><span class="ch-badge line">Line Ads</span></td>
-                        <td class="num green">276,390</td>
-                        <td class="num green">276,390</td>
-                        <td class="num accent">5</td>
-                        <td class="num">20%</td>
-                        <td class="num">74,091</td>
-                      </tr>
-                      <tr>
-                        <td><span class="ch-badge organic">Organic</span></td>
-                        <td class="num green">100,000</td>
-                        <td class="num green">100,000</td>
-                        <td class="num accent">1</td>
-                        <td class="num">4%</td>
-                        <td class="num muted">—</td>
-                      </tr>
-                      <tr>
-                        <td><span class="ch-badge other">Other</span></td>
-                        <td class="num green">100,000</td>
-                        <td class="num green">100,000</td>
-                        <td class="num accent">2</td>
-                        <td class="num">8%</td>
-                        <td class="num muted">—</td>
-                      </tr>
-                      <tr class="total-row">
-                        <td><strong>Total</strong></td>
-                        <td class="num green"><strong>1,114,634</strong></td>
-                        <td class="num green"><strong>1,114,634</strong></td>
-                        <td class="num accent"><strong>25</strong></td>
-                        <td class="num"><strong>100%</strong></td>
-                        <td class="num"><strong>476,463</strong></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div class="dh-cross-hint">✦ Cross-filter ได้ทุก Dimension — กด cell ใดก็ filter visual ทั้งหน้าอัตโนมัติ</div>
-                </div>
-              </div>
-
-              <!-- Right panel: Visualizations + Data pane (like Power BI) -->
-              <div class="dh-right">
-                <!-- Vis picker (top right) -->
-                <div class="dh-panel-section">
-                  <div class="dh-panel-title">Visualizations</div>
-                  <div class="dh-vis-grid">
-                    <div class="dh-vis-btn active" title="Table">⊞</div>
-                    <div class="dh-vis-btn" title="Bar chart">▊</div>
-                    <div class="dh-vis-btn" title="Line chart">〜</div>
-                    <div class="dh-vis-btn" title="Donut">◎</div>
-                    <div class="dh-vis-btn" title="Card">▣</div>
-                    <div class="dh-vis-btn" title="Matrix">⊟</div>
-                    <div class="dh-vis-btn" title="Map">⊕</div>
-                    <div class="dh-vis-btn" title="Waterfall">⧖</div>
-                  </div>
-                  <div class="dh-col-label">Columns (dragged fields)</div>
-                  <div class="dh-col-chips">
-                    <div class="dh-col-chip blue">marketing_channel ×</div>
-                    <div class="dh-col-chip green">net_sales_all ×</div>
-                    <div class="dh-col-chip green">net_sales_new ×</div>
-                    <div class="dh-col-chip accent">closed_new ×</div>
-                    <div class="dh-col-chip muted">%closed_new ×</div>
-                    <div class="dh-col-chip muted">ads_spent ×</div>
-                  </div>
-                </div>
-
-                <!-- Data pane — the key differentiator -->
-                <div class="dh-panel-section dh-data-pane">
-                  <div class="dh-panel-title" style="display:flex;align-items:center;justify-content:space-between;">
-                    <span>Data</span>
-                    <input class="dh-search" type="text" placeholder="🔍 Search fields..." readonly/>
-                  </div>
-
-                  <!-- Measure table -->
-                  <div class="dh-table-group">
-                    <div class="dh-group-header measure">
-                      <span class="dh-group-icon">⚡</span> Marketing Measure
-                      <span class="dh-expand">▾</span>
-                    </div>
-                    <div class="dh-field-list">
-                      <div class="dh-field measure-field active">☑ ads_spent</div>
-                      <div class="dh-field measure-field active">☑ click</div>
-                      <div class="dh-field measure-field active">☑ impression</div>
-                      <div class="dh-field measure-field">☐ %mc</div>
-                      <div class="dh-field measure-field active">☑ reach</div>
-                    </div>
-                  </div>
-
-                  <div class="dh-table-group">
-                    <div class="dh-group-header measure">
-                      <span class="dh-group-icon">⚡</span> Order Measure
-                      <span class="dh-expand">▾</span>
-                    </div>
-                    <div class="dh-field-list">
-                      <div class="dh-field measure-field">☐ closed_all</div>
-                      <div class="dh-field measure-field">☐ %closed_all</div>
-                      <div class="dh-field measure-field">☐ closed_con</div>
-                      <div class="dh-field measure-field active">☑ closed_new</div>
-                      <div class="dh-field measure-field">☐ %closed_qualify</div>
-                      <div class="dh-field measure-field">☐ %closed_serious</div>
-                      <div class="dh-field measure-field active">☑ net_sales_all</div>
-                      <div class="dh-field measure-field">☐ net_sales_con</div>
-                      <div class="dh-field measure-field active">☑ net_sales_new</div>
-                    </div>
-                  </div>
-
-                  <!-- Dim tables -->
-                  <div class="dh-table-group">
-                    <div class="dh-group-header dim">
-                      <span class="dh-group-icon">📅</span> Dim Calendar
-                      <span class="dh-expand">▸</span>
-                    </div>
-                  </div>
-                  <div class="dh-table-group">
-                    <div class="dh-group-header dim active-group">
-                      <span class="dh-group-icon">📣</span> Dim Marketing Channel
-                      <span class="dh-expand">▾</span>
-                    </div>
-                    <div class="dh-field-list">
-                      <div class="dh-field dim-field active">☑ marketing_channel</div>
-                    </div>
-                  </div>
-                  <div class="dh-table-group">
-                    <div class="dh-group-header dim">
-                      <span class="dh-group-icon">🧑‍💼</span> Dim Sale Person
-                      <span class="dh-expand">▸</span>
-                    </div>
-                  </div>
-                  <div class="dh-table-group">
-                    <div class="dh-group-header dim">
-                      <span class="dh-group-icon">📦</span> Dim Order
-                      <span class="dh-expand">▸</span>
-                    </div>
-                  </div>
-                  <div class="dh-table-group">
-                    <div class="dh-group-header dim">
-                      <span class="dh-group-icon">🏢</span> Dim BU
-                      <span class="dh-expand">▸</span>
-                    </div>
-                  </div>
-                  <div class="dh-table-group">
-                    <div class="dh-group-header dim">
-                      <span class="dh-group-icon">👤</span> Dim Lead
-                      <span class="dh-expand">▸</span>
-                    </div>
-                  </div>
-
-                  <div class="dh-relation-note">
-                    🔗 ทุก Dimension มี Relation กับ Fact Table แล้ว<br>
-                    Cross-filter ได้อิสระ — ไม่ต้อง join เอง
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div style="overflow:hidden; background:#111315;">
+            <img src="Screenshot_2026-05-03_205521.png" alt="Data Hub Power BI Screenshot" style="width:100%; display:block; border-radius:0 0 4px 4px;" />
           </div>
         </div>
-        <a href="https://drive.google.com/file/d/1JtRiSPLYuJ-aYKcPb0LmuPwUN6cO_Vye/view?usp=sharing" target="_blank" class="phase-link-btn phase-link-btn-video">
-          ▶ ดูวิดีโอตัวอย่างการใช้งาน Data Hub →
-        </a>
+
+        <!-- ── DATA HUB BUTTONS ── -->
+        <div style="display:flex; flex-wrap:wrap; gap:14px; margin-bottom:8px;">
+          <a href="https://drive.google.com/file/d/1JtRiSPLYuJ-aYKcPb0LmuPwUN6cO_Vye/view?usp=sharing" target="_blank" class="dh-action-btn dh-btn-video">
+            <span class="dh-btn-icon">▶</span>
+            <span class="dh-btn-text">
+              <span class="dh-btn-title">ดูวิดีโอตัวอย่าง</span>
+              <span class="dh-btn-sub">การใช้งาน Data Hub</span>
+            </span>
+            <span class="dh-btn-arrow">→</span>
+          </a>
+          <a href="https://drive.google.com/file/d/1QPdeWV-3qAg5K24FjJNRJvb0S962kbzy/view?usp=drive_link" target="_blank" class="dh-action-btn dh-btn-download">
+            <span class="dh-btn-icon">⬇</span>
+            <span class="dh-btn-text">
+              <span class="dh-btn-title">Download DataHub Mockup</span>
+              <span class="dh-btn-sub">ไฟล์ Power BI (.pbix)</span>
+            </span>
+            <span class="dh-btn-arrow">→</span>
+          </a>
+          <a href="https://docs.google.com/spreadsheets/d/1oNrIxIJKNka_A-TP-0-M9ZtzoPAa4KN4EUuvc5hGW-o/edit?usp=sharing" target="_blank" class="dh-action-btn dh-btn-dict">
+            <span class="dh-btn-icon">📋</span>
+            <span class="dh-btn-text">
+              <span class="dh-btn-title">Data Dictionary</span>
+              <span class="dh-btn-sub">DataHub Mockup</span>
+            </span>
+            <span class="dh-btn-arrow">→</span>
+          </a>
+        </div>
       </div>
     </div>
 
@@ -2500,7 +2435,7 @@ footer {
     <!-- Phase 4 — AI Business Advisor -->
     <div class="phase-item reveal" id="phase4">
       <div class="phase-left" style="background: rgba(124,108,240,0.05); border-right-color: rgba(124,108,240,0.2);">
-        <div class="phase-num" style="color: rgba(124,108,240,0.3);">04</div>
+        <div class="phase-num" style="color: rgba(124,108,240,0.65); text-shadow: 0 0 24px rgba(124,108,240,0.25);">04</div>
         <div><div class="phase-tag" style="color: var(--graph);">AI Layer 1</div></div>
       </div>
       <div class="phase-right">
@@ -2540,7 +2475,7 @@ footer {
     <!-- Phase 5 — AI Insight Engine -->
     <div class="phase-item reveal" id="phase5">
       <div class="phase-left" style="background: rgba(76,175,130,0.04); border-right-color: rgba(76,175,130,0.15);">
-        <div class="phase-num" style="color: rgba(76,175,130,0.25);">05</div>
+        <div class="phase-num" style="color: rgba(76,175,130,0.65); text-shadow: 0 0 24px rgba(76,175,130,0.25);">05</div>
         <div><div class="phase-tag" style="color: var(--green);">AI Layer 2</div></div>
       </div>
       <div class="phase-right">
@@ -2562,7 +2497,7 @@ footer {
     <!-- Phase 6 — The Brain -->
     <div class="phase-item reveal" id="phase6">
       <div class="phase-left" style="background: rgba(91,156,240,0.05); border-right-color: rgba(91,156,240,0.2);">
-        <div class="phase-num" style="color: rgba(91,156,240,0.3);">06</div>
+        <div class="phase-num" style="color: rgba(91,156,240,0.65); text-shadow: 0 0 24px rgba(91,156,240,0.25);">06</div>
         <div><div class="phase-tag" style="color: var(--blue);">AI Layer 3 · Peak</div></div>
       </div>
       <div class="phase-right">
